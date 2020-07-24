@@ -15,24 +15,26 @@ export const fetchPostsFailure = (error) => ({
 	type: FETCH_POSTS_FAILURE,
 	payload: { error },
 });
-export function fetchPosts() {
+
+export const fetchPosts = () => {
 	return (dispatch) => {
 		dispatch(fetchPostsBegin());
 		return fetch('https://jsonplaceholder.typicode.com/posts')
 			.then(handleErrors)
 			.then((res) => res.json())
 			.then((json) => {
-				dispatch(fetchPostsSuccess(json.products));
-				return json.products;
+				dispatch(fetchPostsSuccess(json));
+				console.log(json);
+				return json;
 			})
 			.catch((error) => dispatch(fetchPostsFailure(error)));
 	};
-}
+};
 
 // Handle HTTP errors since fetch won't.
-function handleErrors(response) {
+const handleErrors = (response) => {
 	if (!response.ok) {
 		throw Error(response.statusText);
 	}
 	return response;
-}
+};
