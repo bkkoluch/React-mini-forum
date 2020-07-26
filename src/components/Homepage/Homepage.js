@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions/postActions';
+import styles from './Homepage.module.css';
+import User from '../User/User';
 
 class Homepage extends React.Component {
 	componentDidMount() {
@@ -19,17 +21,29 @@ class Homepage extends React.Component {
 		}
 
 		return (
-			<ul>
-				{posts.map((post) => (
+			<div className={styles.homepage__container}>
+				{/* {posts.map((post) => (
 					<li key={post.id}>{post.title}</li>
-				))}
-			</ul>
+				))} */}
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+				<User />
+			</div>
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	posts: state.posts.items,
+	posts: state.posts.posts,
 	loading: state.posts.loading,
 	error: state.posts.error,
 });
