@@ -1,39 +1,39 @@
 import {
-	FETCH_POSTS_BEGIN,
-	FETCH_POSTS_SUCCESS,
-	FETCH_POSTS_FAILURE,
-} from './../actions/postActions';
+	FETCH_USERS_BEGIN,
+	FETCH_USERS_FAILURE,
+	FETCH_USERS_SUCCESS,
+} from './../actions/userActions';
 
 const initialState = {
-	posts: [],
+	users: [],
 	loading: false,
 	error: null,
 };
 
-const postsReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_POSTS_BEGIN:
+		case FETCH_USERS_BEGIN:
 			return {
 				...state,
 				loading: true,
 				error: null,
 			};
-		case FETCH_POSTS_SUCCESS:
+		case FETCH_USERS_SUCCESS:
 			return {
 				...state,
 				loading: false,
-				posts: action.payload.posts,
+				users: action.payload.users,
 			};
-		case FETCH_POSTS_FAILURE:
+		case FETCH_USERS_FAILURE:
 			return {
 				...state,
 				loading: false,
 				error: action.payload.error,
-				posts: [],
+				users: [],
 			};
 		default:
 			return state;
 	}
 };
 
-export default postsReducer;
+export default usersReducer;
