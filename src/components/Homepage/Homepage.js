@@ -20,10 +20,9 @@ class Homepage extends React.Component {
 
 		return (
 			<ul>
-				{/* {posts.map((post) => (
-					<li key={post.id}>{post.name}</li>
-				))} */}
-				{console.log(this.props)}
+				{posts.map((post) => (
+					<li key={post.id}>{post.title}</li>
+				))}
 			</ul>
 		);
 	}
