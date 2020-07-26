@@ -5,7 +5,7 @@ import {
 } from './../actions/postActions';
 
 const initialState = {
-	items: [],
+	posts: [],
 	loading: false,
 	error: null,
 };
@@ -22,14 +22,14 @@ const postsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: false,
-				items: action.payload.posts,
+				posts: action.payload.posts,
 			};
 		case FETCH_POSTS_FAILURE:
 			return {
 				...state,
 				loading: false,
 				error: action.payload.error,
-				items: [],
+				posts: [],
 			};
 		default:
 			return state;
