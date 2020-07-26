@@ -9,9 +9,12 @@ class UserDetails extends React.Component {
 		this.props.dispatch(fetchPosts());
 	}
 
+	goBack = () => {
+		this.props.history.goBack();
+	};
+
 	render() {
 		const { error, loading, posts } = this.props;
-		console.log(this.props);
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -23,6 +26,7 @@ class UserDetails extends React.Component {
 
 		return (
 			<div className={styles.userDetails__container}>
+				<button onClick={this.goBack}>Go Back</button>
 				<p
 					style={{
 						marginBottom: '80px',
