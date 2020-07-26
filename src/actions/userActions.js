@@ -24,7 +24,6 @@ export const fetchUsers = () => {
 			.then((res) => res.json())
 			.then((json) => {
 				dispatch(fetchUsersSuccess(json));
-				console.log(json);
 				return json;
 			})
 			.catch((error) => dispatch(fetchUsersFailure(error)));

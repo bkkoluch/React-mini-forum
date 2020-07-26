@@ -1,21 +1,19 @@
 import React from 'react';
 import styles from './User.module.css';
 
-const User = () => {
+const User = (props) => {
 	return (
 		<div className={styles.user__container}>
-			<p className={styles.user__name}>Leanne Graham</p>
+			<p className={styles.user__name}>{props.name}</p>
 			<div className={styles.user__details}>
-				<p>Sincere@april.biz</p>
-				<p>1-770-736-8031</p>
-				<p>hildegard.org</p>
+				<p>{props.email}</p>
+				<p>{props.phone}</p>
+				<p>{props.website}</p>
 			</div>
-
 			<div className={styles.user__company}>
-				<p>Romaguera-Crona</p>
-				<p>Multi-layered client-server neural-net!</p>
+				<p>{props.company.name}</p>
+				<p>{props.company.catchPhrase}</p>
 			</div>
-
 			<button className={styles.user__button}>Details</button>
 		</div>
 	);

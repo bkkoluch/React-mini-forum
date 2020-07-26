@@ -24,7 +24,6 @@ export const fetchPosts = () => {
 			.then((res) => res.json())
 			.then((json) => {
 				dispatch(fetchPostsSuccess(json));
-				// console.log(json);
 				return json;
 			})
 			.catch((error) => dispatch(fetchPostsFailure(error)));

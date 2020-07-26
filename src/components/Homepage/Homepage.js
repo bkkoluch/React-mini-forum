@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions/postActions';
+import { fetchUsers } from '../../actions/userActions';
 import styles from './Homepage.module.css';
 import User from '../User/User';
 
 class Homepage extends React.Component {
 	componentDidMount() {
-		this.props.dispatch(fetchPosts());
+		this.props.dispatch(fetchUsers());
 	}
 
 	render() {
-		const { error, loading, posts } = this.props;
+		const { error, loading, users } = this.props;
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -22,30 +23,25 @@ class Homepage extends React.Component {
 
 		return (
 			<div className={styles.homepage__container}>
-				{/* {posts.map((post) => (
-					<li key={post.id}>{post.title}</li>
-				))} */}
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
-				<User />
+				{users.map((user) => (
+					<User
+						key={user.id}
+						name={user.name}
+						company={user.company}
+						email={user.email}
+						phone={user.phone.split(' ')[0]}
+						website={user.website}
+					/>
+				))}
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	posts: state.posts.posts,
-	loading: state.posts.loading,
-	error: state.posts.error,
+	users: state.users.users,
+	loading: state.users.loading,
+	error: state.users.error,
 });
 
 export default connect(mapStateToProps)(Homepage);
