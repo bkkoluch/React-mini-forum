@@ -22,7 +22,7 @@ class Homepage extends React.Component {
 
 		return (
 			<div className={styles.homepage__container}>
-				{users.map((user, index) => (
+				{users.map((user) => (
 					<User
 						id={user.id}
 						key={user.id}

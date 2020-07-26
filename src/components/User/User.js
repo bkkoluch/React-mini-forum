@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './User.module.css';
 import { connect, useDispatch } from 'react-redux';
-import { getUsersId } from '../../actions/userActions';
+import { getUsersId, getUsersName } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 
 const User = (props) => {
 	const dispatch = useDispatch();
+
+	const getData = () => {
+		dispatch(getUsersId(props.id));
+		dispatch(getUsersName(props.name));
+	};
 
 	return (
 		<div className={styles.user__container}>
@@ -22,7 +27,7 @@ const User = (props) => {
 			<Link
 				to='/user_details'
 				className={styles.user__button}
-				onClick={() => dispatch(getUsersId(props.id))}
+				onClick={() => getData()}
 			>
 				Details
 			</Link>

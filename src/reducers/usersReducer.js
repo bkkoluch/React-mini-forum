@@ -3,6 +3,7 @@ import {
 	FETCH_USERS_FAILURE,
 	FETCH_USERS_SUCCESS,
 	GET_USER_ID,
+	GET_USER_NAME,
 } from './../actions/userActions';
 
 const initialState = {
@@ -37,6 +38,11 @@ const usersReducer = (state = initialState, action) => {
 			return {
 				...state,
 				id: action.payload.id,
+			};
+		case GET_USER_NAME:
+			return {
+				...state,
+				name: action.payload.name,
 			};
 		default:
 			return state;

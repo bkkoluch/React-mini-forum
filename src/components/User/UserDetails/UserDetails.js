@@ -14,7 +14,7 @@ class UserDetails extends React.Component {
 	};
 
 	render() {
-		const { error, loading, posts, id } = this.props;
+		const { error, loading, posts, name } = this.props;
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -34,7 +34,7 @@ class UserDetails extends React.Component {
 						textAlign: 'center',
 					}}
 				>
-					Leanne Graham
+					{this.props.name}
 				</p>
 				{console.log(posts)}
 				{posts.map((post) =>
@@ -54,6 +54,7 @@ const mapStateToProps = (state) => ({
 	loading: state.posts.loading,
 	error: state.posts.error,
 	id: state.users.id,
+	name: state.users.name,
 });
 
 export default connect(mapStateToProps)(UserDetails);
