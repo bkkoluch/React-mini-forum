@@ -11,8 +11,8 @@
   -webkit-box-flex: 1;
       -ms-flex: 1 0 18%;
           flex: 1 0 18%;
-  margin: 1.5rem;
-  padding: 1rem;
+  margin: 24px;
+  padding: 16px;
 }
 
 .user__container p {
@@ -47,7 +47,7 @@
   border: 2px solid black;
   -webkit-box-shadow: 2px 2px 2px black;
           box-shadow: 2px 2px 2px black;
-  margin-top: 2rem;
+  margin-top: 32px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;

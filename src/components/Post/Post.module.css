@@ -1,0 +1,9 @@
+.post__container {
+  border: 3px solid black;
+  margin: 0 80px 16px 80px;
+}
+
+.post__container p {
+  margin-left: 64px;
+}
+/*# sourceMappingURL=Post.module.css.map */

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/postActions';
 import { fetchUsers } from '../../actions/userActions';
 import styles from './Homepage.module.css';
 import User from '../User/User';
