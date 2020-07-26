@@ -6,12 +6,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 21%;
-          flex: 1 0 21%;
   border: 3px solid black;
-  max-width: 250px;
   min-height: 280px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 18%;
+          flex: 1 0 18%;
   margin: 1.5rem;
   padding: 1rem;
 }
