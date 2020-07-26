@@ -14,7 +14,9 @@ const User = (props) => {
 				<p>{props.company.name}</p>
 				<p>{props.company.catchPhrase}</p>
 			</div>
-			<button className={styles.user__button}>Details</button>
+			<a href='/user_details' className={styles.user__button}>
+				Details
+			</a>
 		</div>
 	);
 };
