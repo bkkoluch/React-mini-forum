@@ -14,7 +14,7 @@ class UserDetails extends React.Component {
 	};
 
 	render() {
-		const { error, loading, posts } = this.props;
+		const { error, loading, posts, id } = this.props;
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -36,9 +36,14 @@ class UserDetails extends React.Component {
 				>
 					Leanne Graham
 				</p>
-				{posts.map((post) => (
-					<Post key={post.id} title={post.title} />
-				))}
+				{console.log(posts)}
+				{posts.map((post) =>
+					post.userId === this.props.id ? (
+						<Post key={post.id} title={post.title} />
+					) : (
+						''
+					)
+				)}
 			</div>
 		);
 	}
@@ -48,6 +53,7 @@ const mapStateToProps = (state) => ({
 	posts: state.posts.posts,
 	loading: state.posts.loading,
 	error: state.posts.error,
+	id: state.users.id,
 });
 
 export default connect(mapStateToProps)(UserDetails);

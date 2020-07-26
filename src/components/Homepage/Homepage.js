@@ -22,8 +22,9 @@ class Homepage extends React.Component {
 
 		return (
 			<div className={styles.homepage__container}>
-				{users.map((user) => (
+				{users.map((user, index) => (
 					<User
+						id={user.id}
 						key={user.id}
 						name={user.name}
 						company={user.company}

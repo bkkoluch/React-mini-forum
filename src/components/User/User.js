@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './User.module.css';
+import { connect, useDispatch } from 'react-redux';
+import { getUsersId } from '../../actions/userActions';
+import { Link } from 'react-router-dom';
 
 const User = (props) => {
+	const dispatch = useDispatch();
+
 	return (
 		<div className={styles.user__container}>
 			<p className={styles.user__name}>{props.name}</p>
@@ -14,9 +19,13 @@ const User = (props) => {
 				<p>{props.company.name}</p>
 				<p>{props.company.catchPhrase}</p>
 			</div>
-			<a href='/user_details' className={styles.user__button}>
+			<Link
+				to='/user_details'
+				className={styles.user__button}
+				onClick={() => dispatch(getUsersId(props.id))}
+			>
 				Details
-			</a>
+			</Link>
 		</div>
 	);
 };
