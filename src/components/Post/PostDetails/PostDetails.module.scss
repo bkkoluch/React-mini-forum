@@ -1,0 +1,16 @@
+.postDetails__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	width: 70%;
+}
+
+.postDetails__name {
+	font-weight: bold;
+}
+
+.postDetails__title {
+	font-size: 20px;
+	font-weight: bold;
+}

@@ -1,0 +1,22 @@
+.comment__container {
+	p {
+		margin: 0;
+	}
+	border: 3px solid black;
+	margin: 8px;
+	padding: 16px;
+	width: 100%;
+}
+
+.comment__details {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 16px;
+	p {
+		font-weight: bold;
+	}
+
+	&__email {
+		color: rgb(100, 120, 255);
+	}
+}

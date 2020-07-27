@@ -1,6 +1,9 @@
 export const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
+export const GET_POST_TITLE = 'GET_POST_TITLE';
+export const GET_POST_BODY = 'GET_POST_BODY';
+export const GET_POST_ID = 'GET_POST_ID';
 
 export const fetchPostsBegin = () => ({
 	type: FETCH_POSTS_BEGIN,
@@ -14,6 +17,21 @@ export const fetchPostsSuccess = (posts) => ({
 export const fetchPostsFailure = (error) => ({
 	type: FETCH_POSTS_FAILURE,
 	payload: { error },
+});
+
+export const getPostTitle = (title) => ({
+	type: GET_POST_TITLE,
+	payload: { title },
+});
+
+export const getPostBody = (body) => ({
+	type: GET_POST_BODY,
+	payload: { body },
+});
+
+export const getPostId = (id) => ({
+	type: GET_POST_ID,
+	payload: { id },
 });
 
 export const fetchPosts = () => {
