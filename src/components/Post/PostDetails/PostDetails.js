@@ -41,9 +41,13 @@ class PostDetails extends React.Component {
 						>
 							Show comments
 						</button>
-						<button>Add Comment</button>
+						<button
+							className={this.props.show ? '' : styles.hidden}
+						>
+							Add Comment
+						</button>
 					</div>
-					{!this.props.show
+					{this.props.show
 						? comments.map((comment) =>
 								comment.postId === this.props.id ? (
 									<Comment

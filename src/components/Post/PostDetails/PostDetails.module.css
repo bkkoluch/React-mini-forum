@@ -21,4 +21,8 @@
 .postDetails__body {
   text-align: center;
 }
+
+.hidden {
+  display: none;
+}
 /*# sourceMappingURL=PostDetails.module.css.map */
