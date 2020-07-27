@@ -38,7 +38,11 @@ class UserDetails extends React.Component {
 				</div>
 				{posts.map((post) =>
 					post.userId === this.props.id ? (
-						<Post key={post.id} title={post.title} />
+						<Post
+							key={post.id}
+							title={post.title}
+							body={post.body}
+						/>
 					) : (
 						''
 					)
