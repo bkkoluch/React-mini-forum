@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from './../../../actions/postActions';
+import { fetchPosts, deletePost } from './../../../actions/postActions';
 import Post from '../../Post/Post';
-import styles from './UserDetails.module.css';
+// import styles from './UserDetails.module.css';
+import Header from '../../Header/Header';
 
 class UserDetails extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(fetchPosts());
 	}
-
-	goBack = () => {
-		this.props.history.goBack();
-	};
 
 	render() {
 		const { error, loading, posts } = this.props;
@@ -23,19 +20,10 @@ class UserDetails extends React.Component {
 		if (loading) {
 			return <div>Loading...</div>;
 		}
-
+		console.log(this.props);
 		return (
 			<div>
-				<div className={styles.userDetails__header}>
-					<button
-						className={styles.userDetails__backButton}
-						onClick={this.goBack}
-					></button>
-					<p className={styles.userDetails__name}>
-						{this.props.name}
-					</p>
-					<button className={styles.userDetails__addButton}></button>
-				</div>
+				<Header name={this.props.name} history={this.props.history} />
 				{posts.map((post) =>
 					post.userId === this.props.id ? (
 						<Post

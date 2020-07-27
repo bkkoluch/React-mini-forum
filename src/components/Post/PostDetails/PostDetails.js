@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
-import { fetchComments } from '../../../actions/commentActions';
+import { fetchComments, commentToggle } from '../../../actions/commentActions';
 import Comment from '../../Comment/Comment';
+import Header from '../../Header/Header';
 
 class PostDetails extends React.Component {
 	componentDidMount() {
@@ -21,24 +22,57 @@ class PostDetails extends React.Component {
 		}
 
 		return (
-			<div className={styles.postDetails__container}>
-				<p className={styles.postDetails__name}>{this.props.name}</p>
-				<p className={styles.postDetails__title}>{this.props.title}</p>
-				<p>{this.props.body}</p>
-				{comments.map((comment) =>
-					comment.postId === this.props.id ? (
-						<Comment
-							key={comment.id}
-							name={comment.name}
-							body={comment.body}
-							email={comment.email}
-						/>
-					) : (
-						''
-					)
-				)}
-
-				{console.log(this.props)}
+			<div>
+				<Header
+					name={this.props.name}
+					history={this.props.history}
+					show={true}
+				/>
+				<div className={styles.postDetails__container}>
+					<p className={styles.postDetails__title}>
+						{this.props.title}
+					</p>
+					<p className={styles.postDetails__body}>
+						{this.props.body}
+					</p>
+					<div className={styles.postDetails__container__buttons}>
+						<button
+							className={
+								styles[
+									'postDetails__container__buttons--toggle'
+								]
+							}
+							onClick={() => this.props.dispatch(commentToggle())}
+						>
+							Show comments
+						</button>
+						<button
+							className={
+								this.props.show
+									? styles[
+											'postDetails__container__buttons--add'
+									  ]
+									: styles.hidden
+							}
+						>
+							Add Comment
+						</button>
+					</div>
+					{this.props.show
+						? comments.map((comment) =>
+								comment.postId === this.props.id ? (
+									<Comment
+										key={comment.id}
+										name={comment.name}
+										body={comment.body}
+										email={comment.email}
+									/>
+								) : (
+									''
+								)
+						  )
+						: ''}
+				</div>
 			</div>
 		);
 	}
@@ -50,6 +84,7 @@ const mapStateToProps = (state) => ({
 	title: state.posts.title,
 	body: state.posts.body,
 	comments: state.comments.comments,
+	show: state.comments.show,
 });
 
 export default connect(mapStateToProps)(PostDetails);

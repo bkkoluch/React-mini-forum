@@ -2,16 +2,18 @@ import React from 'react';
 import styles from './User.module.css';
 import { useDispatch } from 'react-redux';
 import { getUsersId, getUsersName } from '../../actions/userActions';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { deletePost } from '../../actions/postActions';
 
 const User = (props) => {
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const getData = () => {
+		history.push('/user_details');
 		dispatch(getUsersId(props.id));
 		dispatch(getUsersName(props.name));
 	};
-
 	return (
 		<div className={styles.user__container}>
 			<p className={styles.user__name}>{props.name}</p>
@@ -24,13 +26,9 @@ const User = (props) => {
 				<p>{props.company.name}</p>
 				<p>{props.company.catchPhrase}</p>
 			</div>
-			<Link
-				to='/user_details'
-				className={styles.user__button}
-				onClick={() => getData()}
-			>
+			<button className={styles.user__button} onClick={() => getData()}>
 				Details
-			</Link>
+			</button>
 		</div>
 	);
 };
