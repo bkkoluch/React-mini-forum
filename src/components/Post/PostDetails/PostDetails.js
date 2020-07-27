@@ -10,23 +10,33 @@ class PostDetails extends React.Component {
 	}
 
 	render() {
-		const { comments } = this.props;
+		const { error, loading, comments } = this.props;
+
+		if (error) {
+			return <div>Error! {error.message}</div>;
+		}
+
+		if (loading) {
+			return <div>Loading...</div>;
+		}
+
 		return (
 			<div className={styles.postDetails__container}>
 				<p className={styles.postDetails__name}>{this.props.name}</p>
 				<p className={styles.postDetails__title}>{this.props.title}</p>
 				<p>{this.props.body}</p>
-				{comments.map((comment) => {
-					return comment.postId === this.props.id ? (
+				{comments.map((comment) =>
+					comment.postId === this.props.id ? (
 						<Comment
 							key={comment.id}
 							name={comment.name}
 							body={comment.body}
+							email={comment.email}
 						/>
 					) : (
 						''
-					);
-				})}
+					)
+				)}
 
 				{console.log(this.props)}
 			</div>
