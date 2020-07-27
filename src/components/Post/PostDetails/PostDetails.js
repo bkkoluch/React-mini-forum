@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
 import { fetchComments } from '../../../actions/commentActions';
 import Comment from '../../Comment/Comment';
+import Header from '../../Header/Header';
 
 class PostDetails extends React.Component {
 	componentDidMount() {
@@ -21,24 +22,34 @@ class PostDetails extends React.Component {
 		}
 
 		return (
-			<div className={styles.postDetails__container}>
-				<p className={styles.postDetails__name}>{this.props.name}</p>
-				<p className={styles.postDetails__title}>{this.props.title}</p>
-				<p>{this.props.body}</p>
-				{comments.map((comment) =>
-					comment.postId === this.props.id ? (
-						<Comment
-							key={comment.id}
-							name={comment.name}
-							body={comment.body}
-							email={comment.email}
-						/>
-					) : (
-						''
-					)
-				)}
+			<div>
+				<Header
+					name={this.props.name}
+					history={this.props.history}
+					show={true}
+				/>
+				<div className={styles.postDetails__container}>
+					<p className={styles.postDetails__title}>
+						{this.props.title}
+					</p>
+					<p className={styles.postDetails__body}>
+						{this.props.body}
+					</p>
+					{comments.map((comment) =>
+						comment.postId === this.props.id ? (
+							<Comment
+								key={comment.id}
+								name={comment.name}
+								body={comment.body}
+								email={comment.email}
+							/>
+						) : (
+							''
+						)
+					)}
 
-				{console.log(this.props)}
+					{console.log(this.props)}
+				</div>
 			</div>
 		);
 	}
