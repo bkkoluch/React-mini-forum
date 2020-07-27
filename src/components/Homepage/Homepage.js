@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/postActions';
 import { fetchUsers } from '../../actions/userActions';
 import styles from './Homepage.module.css';
 import User from '../User/User';
@@ -25,6 +24,7 @@ class Homepage extends React.Component {
 			<div className={styles.homepage__container}>
 				{users.map((user) => (
 					<User
+						id={user.id}
 						key={user.id}
 						name={user.name}
 						company={user.company}

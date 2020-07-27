@@ -1,0 +1,75 @@
+p {
+  font-weight: 500;
+}
+
+.userDetails__backButton,
+.userDetails__addButton {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.userDetails__backButton {
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.userDetails__backButton:after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 45px;
+  background-color: black;
+  -webkit-transform: rotate(-45deg) translate(12px);
+          transform: rotate(-45deg) translate(12px);
+  left: 0;
+  top: 0;
+}
+
+.userDetails__addButton {
+  position: relative;
+}
+
+.userDetails__addButton:after, .userDetails__addButton:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background-color: black;
+}
+
+.userDetails__addButton:before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.userDetails__name {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.userDetails__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 48px 80px 80px 80px;
+}
+
+.userDetails__header button {
+  justify-self: flex-start;
+}
+/*# sourceMappingURL=UserDetails.module.css.map */
