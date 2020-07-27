@@ -1,8 +1,7 @@
 .comment__container {
   border: 3px solid black;
-  margin: 8px;
+  margin: 8px 0;
   padding: 16px;
-  width: 100%;
 }
 
 .comment__container p {

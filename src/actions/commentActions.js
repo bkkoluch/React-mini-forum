@@ -3,6 +3,7 @@ import { handleErrors } from './postActions';
 export const FETCH_COMMENTS_BEGIN = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
 export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
+export const COMMENT_TOGGLE = 'COMMENT_TOGGLE';
 
 export const fetchCommentsBegin = () => ({
 	type: FETCH_COMMENTS_BEGIN,
@@ -14,6 +15,9 @@ export const fetchCommentsSuccess = (comments) => ({
 export const fetchCommentsFailure = (error) => ({
 	type: FETCH_COMMENTS_FAILURE,
 	payload: { error },
+});
+export const commentToggle = () => ({
+	type: COMMENT_TOGGLE,
 });
 
 export const fetchComments = () => {

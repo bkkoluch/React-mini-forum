@@ -21,8 +21,6 @@ const Post = (props) => {
 		dispatch(getPostId(props.id));
 	};
 
-	console.log(props);
-
 	return (
 		<div className={styles.post__container} onClick={() => clickOnPost()}>
 			<FontAwesomeIcon

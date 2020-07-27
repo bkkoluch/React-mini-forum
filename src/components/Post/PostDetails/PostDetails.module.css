@@ -2,6 +2,16 @@
   margin: 0 80px;
 }
 
+.postDetails__container__buttons {
+  margin-top: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .postDetails__title {
   font-weight: bold;
   text-align: center;

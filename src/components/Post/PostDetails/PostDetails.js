@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
-import { fetchComments } from '../../../actions/commentActions';
+import { fetchComments, commentToggle } from '../../../actions/commentActions';
 import Comment from '../../Comment/Comment';
 import Header from '../../Header/Header';
 
@@ -35,20 +35,28 @@ class PostDetails extends React.Component {
 					<p className={styles.postDetails__body}>
 						{this.props.body}
 					</p>
-					{comments.map((comment) =>
-						comment.postId === this.props.id ? (
-							<Comment
-								key={comment.id}
-								name={comment.name}
-								body={comment.body}
-								email={comment.email}
-							/>
-						) : (
-							''
-						)
-					)}
-
-					{console.log(this.props)}
+					<div className={styles.postDetails__container__buttons}>
+						<button
+							onClick={() => this.props.dispatch(commentToggle())}
+						>
+							Show comments
+						</button>
+						<button>Add Comment</button>
+					</div>
+					{!this.props.show
+						? comments.map((comment) =>
+								comment.postId === this.props.id ? (
+									<Comment
+										key={comment.id}
+										name={comment.name}
+										body={comment.body}
+										email={comment.email}
+									/>
+								) : (
+									''
+								)
+						  )
+						: ''}
 				</div>
 			</div>
 		);
@@ -61,6 +69,7 @@ const mapStateToProps = (state) => ({
 	title: state.posts.title,
 	body: state.posts.body,
 	comments: state.comments.comments,
+	show: state.comments.show,
 });
 
 export default connect(mapStateToProps)(PostDetails);
