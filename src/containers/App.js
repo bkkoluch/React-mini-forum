@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './App.module.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Homepage from '../components/Homepage/Homepage';
 import UserDetails from '../components/User/UserDetails/UserDetails';
