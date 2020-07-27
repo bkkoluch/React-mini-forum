@@ -1,9 +1,20 @@
 .post__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 3px solid black;
   margin: 0 80px 16px 80px;
 }
 
-.post__container p {
-  margin-left: 64px;
+.post__container__trash {
+  margin: 0 16px;
+}
+
+.post__container__arrow {
+  margin-left: auto;
+  margin-right: 16px;
 }
 /*# sourceMappingURL=Post.module.css.map */

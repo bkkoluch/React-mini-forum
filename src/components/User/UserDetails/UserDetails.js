@@ -14,7 +14,7 @@ class UserDetails extends React.Component {
 	};
 
 	render() {
-		const { error, loading, posts, name } = this.props;
+		const { error, loading, posts } = this.props;
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -25,18 +25,17 @@ class UserDetails extends React.Component {
 		}
 
 		return (
-			<div className={styles.userDetails__container}>
-				<button onClick={this.goBack}>Go Back</button>
-				<p
-					style={{
-						marginBottom: '80px',
-						marginTop: '48px',
-						textAlign: 'center',
-					}}
-				>
-					{this.props.name}
-				</p>
-				{console.log(posts)}
+			<div>
+				<div className={styles.userDetails__header}>
+					<button
+						className={styles.userDetails__backButton}
+						onClick={this.goBack}
+					></button>
+					<p className={styles.userDetails__name}>
+						{this.props.name}
+					</p>
+					<button className={styles.userDetails__addButton}></button>
+				</div>
 				{posts.map((post) =>
 					post.userId === this.props.id ? (
 						<Post key={post.id} title={post.title} />

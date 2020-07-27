@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './User.module.css';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getUsersId, getUsersName } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 

@@ -1,2 +1,62 @@
-.userDetails__container {
+p {
+	font-weight: 500;
+}
+
+.userDetails__backButton,
+.userDetails__addButton {
+	align-self: center;
+	width: 25px;
+	height: 25px;
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.userDetails__backButton {
+	border-top: 2px solid #000;
+	border-left: 2px solid #000;
+	transform: rotate(-45deg);
+	&:after {
+		content: '';
+		display: block;
+		width: 2px;
+		height: 45px;
+		background-color: black;
+		transform: rotate(-45deg) translate(12px);
+		left: 0;
+		top: 0;
+	}
+}
+
+.userDetails__addButton {
+	position: relative;
+	&:after,
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 32px;
+		height: 2px;
+		background-color: black;
+	}
+	&:before {
+		transform: rotate(90deg);
+	}
+}
+
+.userDetails__name {
+	font-size: 20px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+.userDetails__header {
+	display: flex;
+	justify-content: space-between;
+	margin: 48px 80px 80px 80px;
+	button {
+		justify-self: flex-start;
+	}
 }
