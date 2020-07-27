@@ -7,6 +7,7 @@ import {
 	getPostTitle,
 	getPostBody,
 	getPostId,
+	deletePost,
 } from '../../actions/postActions';
 import { useDispatch } from 'react-redux';
 
@@ -20,19 +21,25 @@ const Post = (props) => {
 		dispatch(getPostBody(props.body));
 		dispatch(getPostId(props.id));
 	};
+	console.log(props);
+	const removePost = (id) => {
+		dispatch(deletePost(id));
+	};
 
 	return (
-		<div className={styles.post__container} onClick={() => clickOnPost()}>
+		<div className={styles.post__container}>
 			<FontAwesomeIcon
 				icon={faTrashAlt}
 				size='2x'
 				className={styles.post__container__trash}
+				onClick={() => removePost(props.id)}
 			/>
 			<p>{props.title}</p>
 			<FontAwesomeIcon
 				icon={faAngleRight}
 				size='3x'
 				className={styles.post__container__arrow}
+				onClick={() => clickOnPost()}
 			/>
 		</div>
 	);

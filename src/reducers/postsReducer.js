@@ -5,6 +5,7 @@ import {
 	GET_POST_TITLE,
 	GET_POST_BODY,
 	GET_POST_ID,
+	DELETE_POST,
 } from './../actions/postActions';
 
 const initialState = {
@@ -48,6 +49,13 @@ const postsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				id: action.payload.id,
+			};
+		case DELETE_POST:
+			return {
+				...state,
+				posts: state.posts.filter(
+					(post) => post.id !== action.payload.id
+				),
 			};
 		default:
 			return state;

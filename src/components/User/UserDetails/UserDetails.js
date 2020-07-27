@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from './../../../actions/postActions';
+import { fetchPosts, deletePost } from './../../../actions/postActions';
 import Post from '../../Post/Post';
 // import styles from './UserDetails.module.css';
 import Header from '../../Header/Header';
@@ -20,7 +20,7 @@ class UserDetails extends React.Component {
 		if (loading) {
 			return <div>Loading...</div>;
 		}
-
+		console.log(this.props);
 		return (
 			<div>
 				<Header name={this.props.name} history={this.props.history} />

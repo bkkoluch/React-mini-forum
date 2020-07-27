@@ -37,12 +37,23 @@ class PostDetails extends React.Component {
 					</p>
 					<div className={styles.postDetails__container__buttons}>
 						<button
+							className={
+								styles[
+									'postDetails__container__buttons--toggle'
+								]
+							}
 							onClick={() => this.props.dispatch(commentToggle())}
 						>
 							Show comments
 						</button>
 						<button
-							className={this.props.show ? '' : styles.hidden}
+							className={
+								this.props.show
+									? styles[
+											'postDetails__container__buttons--add'
+									  ]
+									: styles.hidden
+							}
 						>
 							Add Comment
 						</button>

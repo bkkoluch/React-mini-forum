@@ -12,13 +12,22 @@
           justify-content: space-between;
 }
 
+.postDetails__container__buttons--add, .postDetails__container__buttons--toggle {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-decoration: underline;
+  font-weight: 500;
+  color: #6478ff;
+}
+
 .postDetails__title {
   font-weight: bold;
-  text-align: center;
   font-size: 20px;
 }
 
-.postDetails__body {
+.postDetails__body,
+.postDetails__title {
   text-align: center;
 }
 
