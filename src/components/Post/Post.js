@@ -3,7 +3,11 @@ import styles from './Post.module.css';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
-import { getPostTitle, getPostBody } from '../../actions/postActions';
+import {
+	getPostTitle,
+	getPostBody,
+	getPostId,
+} from '../../actions/postActions';
 import { useDispatch } from 'react-redux';
 
 const Post = (props) => {
@@ -14,6 +18,7 @@ const Post = (props) => {
 		history.push('/post_details');
 		dispatch(getPostTitle(props.title));
 		dispatch(getPostBody(props.body));
+		dispatch(getPostId(props.id));
 	};
 
 	console.log(props);

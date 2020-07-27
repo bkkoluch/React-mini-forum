@@ -4,6 +4,7 @@ import {
 	FETCH_POSTS_FAILURE,
 	GET_POST_TITLE,
 	GET_POST_BODY,
+	GET_POST_ID,
 } from './../actions/postActions';
 
 const initialState = {
@@ -42,6 +43,11 @@ const postsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				body: action.payload.body,
+			};
+		case GET_POST_ID:
+			return {
+				...state,
+				id: action.payload.id,
 			};
 		default:
 			return state;

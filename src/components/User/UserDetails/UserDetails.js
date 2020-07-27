@@ -40,6 +40,7 @@ class UserDetails extends React.Component {
 					post.userId === this.props.id ? (
 						<Post
 							key={post.id}
+							id={post.id}
 							title={post.title}
 							body={post.body}
 						/>

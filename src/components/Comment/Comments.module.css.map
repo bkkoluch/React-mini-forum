@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAC;EACnB,MAAM,EAAE,eAAe;EACvB,MAAM,EAAE,GAAG;EACX,OAAO,EAAE,GAAG;CACZ",
+    "sources": [
+        "Comments.module.scss"
+    ],
+    "names": [],
+    "file": "Comments.module.css"
+}
