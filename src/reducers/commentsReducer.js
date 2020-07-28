@@ -7,7 +7,7 @@ import {
 
 const initialState = {
 	comments: [],
-	loading: true,
+	loading: false,
 	error: null,
 	show: true,
 };
