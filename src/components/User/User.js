@@ -3,7 +3,6 @@ import styles from './User.module.css';
 import { useDispatch } from 'react-redux';
 import { getUsersId, getUsersName } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
-import { deletePost } from '../../actions/postActions';
 
 const User = (props) => {
 	const history = useHistory();

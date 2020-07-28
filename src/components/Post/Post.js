@@ -21,7 +21,7 @@ const Post = (props) => {
 		dispatch(getPostBody(props.body));
 		dispatch(getPostId(props.id));
 	};
-	console.log(props);
+
 	const removePost = (id) => {
 		dispatch(deletePost(id));
 	};
