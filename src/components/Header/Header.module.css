@@ -139,6 +139,7 @@
   width: 300px;
   margin: 0 20px 0 20px;
   border: 3px solid black;
+  resize: none;
 }
 
 .modal__title p,
@@ -174,6 +175,7 @@
 }
 
 .modal__buttons button {
+  cursor: pointer;
   height: 40px;
   width: 100px;
   border: 3px solid black;

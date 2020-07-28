@@ -44,7 +44,9 @@ class PostDetails extends React.Component {
 							}
 							onClick={() => this.props.dispatch(commentToggle())}
 						>
-							Show comments
+							{this.props.show
+								? 'Hide comments'
+								: 'Show comments'}
 						</button>
 						<button
 							className={

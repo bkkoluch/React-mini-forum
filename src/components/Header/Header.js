@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
 import Modal from 'react-modal';
+import { useDispatch, connect } from 'react-redux';
+import { addPost, deletePost } from '../../actions/postActions';
+
+Modal.setAppElement('#root');
 
 const Header = (props) => {
+	const [modalIsOpen, setIsOpen] = useState(false);
+	const openModal = () => setIsOpen(true);
+	const closeModal = () => setIsOpen(false);
+	const dispatch = useDispatch();
+
 	const goBack = () => {
 		props.history.goBack();
 	};
 
-	const [modalIsOpen, setIsOpen] = useState(false);
-	const openModal = () => setIsOpen(true);
-	const closeModal = () => setIsOpen(false);
+	const sendPost = () => {
+		dispatch(addPost());
+	};
+
+	const removePost = (id) => {
+		dispatch(deletePost(id));
+		goBack();
+	};
 
 	return (
 		<div className={styles.header__container}>
@@ -43,16 +57,21 @@ const Header = (props) => {
 				</div>
 				<div className={styles.modal__buttons}>
 					<button onClick={() => closeModal()}>Cancel</button>
-					<button>Save</button>
+					<button onClick={() => sendPost()}>Save</button>
 				</div>
 			</Modal>
 			<button
 				className={
 					props.show ? styles.header__deleteButton : styles.hidden
 				}
+				onClick={() => removePost(props.id)}
 			></button>
 		</div>
 	);
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+	id: state.posts.id,
+});
+
+export default connect(mapStateToProps)(Header);

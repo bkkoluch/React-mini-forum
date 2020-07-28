@@ -5,6 +5,7 @@ export const GET_POST_TITLE = 'GET_POST_TITLE';
 export const GET_POST_BODY = 'GET_POST_BODY';
 export const GET_POST_ID = 'GET_POST_ID';
 export const DELETE_POST = 'DELETE_POST';
+export const ADD_POST = 'ADD_POST';
 
 export const fetchPostsBegin = () => ({
 	type: FETCH_POSTS_BEGIN,
@@ -38,6 +39,10 @@ export const getPostId = (id) => ({
 export const deletePost = (id) => ({
 	type: DELETE_POST,
 	payload: { id },
+});
+
+export const addPost = () => ({
+	type: ADD_POST,
 });
 
 export const fetchPosts = () => {
