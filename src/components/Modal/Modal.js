@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import styles from './Modal.module.css';
 import Modal from 'react-modal';
 import { useDispatch, connect } from 'react-redux';
-import { showCommentsModal } from '../../actions/commentActions';
+import {
+	showCommentsModal,
+	addComment,
+	sendCommentDetails,
+} from '../../actions/commentActions';
 import {
 	addPost,
 	sendPostDetails,
@@ -15,10 +19,14 @@ const ModalPopup = (props) => {
 	const dispatch = useDispatch();
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [commentBody, setCommentBody] = useState('');
 
 	const toggleCommentModal = () => dispatch(showCommentsModal(props.isOpen));
 	const togglePostModal = () => dispatch(showPostModal(props.showPostModal));
 	const sendPost = () => dispatch(addPost(props.sentPost));
+	const sendComment = () => dispatch(addComment(props.sentComment));
 
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
@@ -27,6 +35,19 @@ const ModalPopup = (props) => {
 	const handleBodyChange = (e) => {
 		setBody(e.target.value);
 		dispatch(sendPostDetails(props.userId, title, body));
+	};
+
+	const handleNameChange = (e) => {
+		setName(e.target.value);
+		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
+	};
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value);
+		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
+	};
+	const handleCommentBodyChange = (e) => {
+		setCommentBody(e.target.value);
+		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
 	};
 
 	if (props.showCommentsModal) {
@@ -42,19 +63,19 @@ const ModalPopup = (props) => {
 				<h2>Add comment</h2>
 				<div className={styles.modal__title}>
 					<p>Name</p>
-					<input type='text' />
+					<input type='text' onChange={handleNameChange} />
 				</div>
 				<div className={styles.modal__email}>
 					<p>Email</p>
-					<input type='text' />
+					<input type='text' onChange={handleEmailChange} />
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<textarea />
+					<textarea onChange={handleCommentBodyChange} />
 				</div>
 				<div className={styles.modal__buttons}>
 					<button onClick={() => toggleCommentModal()}>Cancel</button>
-					<button>Save</button>
+					<button onClick={() => sendComment()}>Save</button>
 				</div>
 			</Modal>
 		);
@@ -100,7 +121,9 @@ const mapStateToProps = (state) => ({
 	showCommentsModal: state.comments.showModal,
 	showPostModal: state.posts.showPostModal,
 	sentPost: state.posts.sentPost,
+	sentComment: state.comments.comment,
 	userId: state.users.id,
+	postId: state.posts.id,
 });
 
 export default connect(mapStateToProps)(ModalPopup);
