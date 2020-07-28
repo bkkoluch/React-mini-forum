@@ -1,4 +1,5 @@
-.header__modal--add {
+.modal__container--comment,
+.modal__container--post {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -31,8 +32,13 @@
 	}
 }
 
+.modal__container--comment {
+	height: 450px;
+}
+
 .modal__title,
-.modal__body {
+.modal__body,
+.modal__email {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -81,6 +87,13 @@
 			background-color: #075394;
 			color: white;
 		}
+	}
+}
+
+.modal__email {
+	margin-top: 18px;
+	p {
+		font-size: 11px;
 	}
 }
 

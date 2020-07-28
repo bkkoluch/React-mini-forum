@@ -1,4 +1,5 @@
-.header__modal--add {
+.modal__container--comment,
+.modal__container--post {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -12,18 +13,21 @@
   text-align: center;
 }
 
-.header__modal--add h5 {
+.modal__container--comment h5,
+.modal__container--post h5 {
   margin: 0;
   border-bottom: 3px solid black;
   padding: 2px;
   text-align: left;
 }
 
-.header__modal--add button {
+.modal__container--comment button,
+.modal__container--post button {
   justify-self: flex-end;
 }
 
-.header__modal--add:after {
+.modal__container--comment:after,
+.modal__container--post:after {
   content: '';
   width: 100%;
   height: 3px;
@@ -34,8 +38,13 @@
   margin-bottom: 25px;
 }
 
+.modal__container--comment {
+  height: 450px;
+}
+
 .modal__title,
-.modal__body {
+.modal__body,
+.modal__email {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,7 +59,9 @@
 .modal__title input,
 .modal__title textarea,
 .modal__body input,
-.modal__body textarea {
+.modal__body textarea,
+.modal__email input,
+.modal__email textarea {
   padding: 0;
   width: 300px;
   margin: 0 20px 0 20px;
@@ -59,7 +70,8 @@
 }
 
 .modal__title p,
-.modal__body p {
+.modal__body p,
+.modal__email p {
   font-size: 12px;
   font-weight: bold;
   margin: 0;
@@ -106,6 +118,14 @@
 .modal__buttons button:nth-child(2) {
   background-color: #075394;
   color: white;
+}
+
+.modal__email {
+  margin-top: 18px;
+}
+
+.modal__email p {
+  font-size: 11px;
 }
 
 .overlay {

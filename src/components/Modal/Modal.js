@@ -5,7 +5,6 @@ import { useDispatch, connect } from 'react-redux';
 import { showCommentsModal } from '../../actions/commentActions';
 import {
 	addPost,
-	deletePost,
 	sendPostDetails,
 	showPostModal,
 } from '../../actions/postActions';
@@ -37,7 +36,7 @@ const ModalPopup = (props) => {
 				onRequestClose={toggleCommentModal}
 				contentLabel='Add post modal'
 				overlayClassName={styles.overlay}
-				className={styles['header__modal--add']}
+				className={styles['modal__container--comment']}
 			>
 				<h5>Add comment</h5>
 				<h2>Add comment</h2>
@@ -45,7 +44,7 @@ const ModalPopup = (props) => {
 					<p>Name</p>
 					<input type='text' />
 				</div>
-				<div className={styles.modal__title}>
+				<div className={styles.modal__email}>
 					<p>Email</p>
 					<input type='text' />
 				</div>
@@ -68,7 +67,7 @@ const ModalPopup = (props) => {
 				onRequestClose={togglePostModal}
 				contentLabel='Add post modal'
 				overlayClassName={styles.overlay}
-				className={styles['header__modal--add']}
+				className={styles['modal__container--post']}
 			>
 				<h5>Add post</h5>
 				<h2>Add post</h2>
