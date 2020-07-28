@@ -3,6 +3,7 @@ import {
 	FETCH_COMMENTS_SUCCESS,
 	FETCH_COMMENTS_FAILURE,
 	COMMENT_TOGGLE,
+	SHOW_COMMENTS_MODAL,
 } from '../actions/commentActions';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
 	loading: false,
 	error: null,
 	show: true,
+	showModal: false,
 };
 
 const commentsReducer = (state = initialState, action) => {
@@ -36,6 +38,11 @@ const commentsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				show: !state.show,
+			};
+		case SHOW_COMMENTS_MODAL:
+			return {
+				...state,
+				showModal: !state.showModal,
 			};
 		default:
 			return state;

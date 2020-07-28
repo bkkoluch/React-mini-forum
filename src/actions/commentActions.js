@@ -4,6 +4,7 @@ export const FETCH_COMMENTS_BEGIN = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
 export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
 export const COMMENT_TOGGLE = 'COMMENT_TOGGLE';
+export const SHOW_COMMENTS_MODAL = 'SHOW_COMMENTS_MODAL';
 
 export const fetchCommentsBegin = () => ({
 	type: FETCH_COMMENTS_BEGIN,
@@ -18,6 +19,10 @@ export const fetchCommentsFailure = (error) => ({
 });
 export const commentToggle = () => ({
 	type: COMMENT_TOGGLE,
+});
+export const showCommentsModal = (showModal) => ({
+	type: SHOW_COMMENTS_MODAL,
+	payload: { showModal },
 });
 
 export const fetchComments = () => {

@@ -7,6 +7,7 @@ export const GET_POST_ID = 'GET_POST_ID';
 export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const SEND_POST_DETAILS = 'SEND_POST_DETAILS';
+export const SHOW_POST_MODAL = 'SHOW_POST_MODAL';
 
 export const fetchPostsBegin = () => ({
 	type: FETCH_POSTS_BEGIN,
@@ -50,6 +51,11 @@ export const addPost = (post) => ({
 export const sendPostDetails = (userId, title, body) => ({
 	type: SEND_POST_DETAILS,
 	payload: { userId, title, body },
+});
+
+export const showPostModal = (showModal) => ({
+	type: SHOW_POST_MODAL,
+	payload: showModal,
 });
 
 export const fetchPosts = () => {

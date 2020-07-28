@@ -8,12 +8,14 @@ import {
 	DELETE_POST,
 	ADD_POST,
 	SEND_POST_DETAILS,
+	SHOW_POST_MODAL,
 } from './../actions/postActions';
 
 const initialState = {
 	posts: [],
 	loading: false,
 	error: null,
+	showPostModal: false,
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -68,6 +70,11 @@ const postsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				sentPost: action.payload,
+			};
+		case SHOW_POST_MODAL:
+			return {
+				...state,
+				showPostModal: !state.showPostModal,
 			};
 		default:
 			return state;
