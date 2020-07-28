@@ -43,7 +43,7 @@
   display: block;
   width: 2px;
   height: 45px;
-  background-color: black;
+  background-color: #075394;
   -webkit-transform: rotate(-45deg) translate(12px);
           transform: rotate(-45deg) translate(12px);
   left: 0;
@@ -65,7 +65,7 @@
   left: 0;
   width: 32px;
   height: 2px;
-  background-color: black;
+  background-color: #075394;
 }
 
 .header__addButton:before,

@@ -10,7 +10,7 @@ const initialState = {
 	users: [],
 	loading: false,
 	error: null,
-	id: 1,
+	id: null,
 };
 
 const usersReducer = (state = initialState, action) => {

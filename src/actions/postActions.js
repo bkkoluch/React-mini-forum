@@ -6,6 +6,7 @@ export const GET_POST_BODY = 'GET_POST_BODY';
 export const GET_POST_ID = 'GET_POST_ID';
 export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
+export const SEND_POST_DETAILS = 'SEND_POST_DETAILS';
 
 export const fetchPostsBegin = () => ({
 	type: FETCH_POSTS_BEGIN,
@@ -41,8 +42,14 @@ export const deletePost = (id) => ({
 	payload: { id },
 });
 
-export const addPost = () => ({
+export const addPost = (post) => ({
 	type: ADD_POST,
+	payload: { post },
+});
+
+export const sendPostDetails = (userId, title, body) => ({
+	type: SEND_POST_DETAILS,
+	payload: { userId, title, body },
 });
 
 export const fetchPosts = () => {

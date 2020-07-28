@@ -2,28 +2,38 @@ import React, { useState } from 'react';
 import styles from './Header.module.css';
 import Modal from 'react-modal';
 import { useDispatch, connect } from 'react-redux';
-import { addPost, deletePost } from '../../actions/postActions';
+import {
+	addPost,
+	deletePost,
+	sendPostDetails,
+} from '../../actions/postActions';
 
 Modal.setAppElement('#root');
 
 const Header = (props) => {
+	const dispatch = useDispatch();
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [title, setTitle] = useState('');
+	const [body, setBody] = useState('');
+
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
-	const dispatch = useDispatch();
-
-	const goBack = () => {
-		props.history.goBack();
-	};
-
-	const sendPost = () => {
-		dispatch(addPost());
-	};
-
+	const goBack = () => props.history.goBack();
+	const sendPost = () => dispatch(addPost(props.sentPost));
 	const removePost = (id) => {
 		dispatch(deletePost(id));
 		goBack();
 	};
+	const handleTitleChange = (e) => {
+		setTitle(e.target.value);
+		dispatch(sendPostDetails(props.userId, title, body));
+	};
+	const handleBodyChange = (e) => {
+		setBody(e.target.value);
+		dispatch(sendPostDetails(props.userId, title, body));
+	};
+
+	//TODO: fix cutting of the last letter
 
 	return (
 		<div className={styles.header__container}>
@@ -49,15 +59,21 @@ const Header = (props) => {
 				<h2>Add post</h2>
 				<div className={styles.modal__title}>
 					<p>Title</p>
-					<input type='text' />
+					<input type='text' onChange={handleTitleChange} />
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<textarea />
+					<textarea onChange={handleBodyChange} />
 				</div>
 				<div className={styles.modal__buttons}>
 					<button onClick={() => closeModal()}>Cancel</button>
-					<button onClick={() => sendPost()}>Save</button>
+					<button
+						onClick={() => {
+							sendPost();
+						}}
+					>
+						Save
+					</button>
 				</div>
 			</Modal>
 			<button
@@ -72,6 +88,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => ({
 	id: state.posts.id,
+	sentPost: state.posts.sentPost,
+	userId: state.users.id,
 });
 
 export default connect(mapStateToProps)(Header);

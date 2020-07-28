@@ -7,6 +7,7 @@ import {
 	GET_POST_ID,
 	DELETE_POST,
 	ADD_POST,
+	SEND_POST_DETAILS,
 } from './../actions/postActions';
 
 const initialState = {
@@ -61,6 +62,12 @@ const postsReducer = (state = initialState, action) => {
 		case ADD_POST:
 			return {
 				...state,
+				posts: state.posts.concat(action.payload.post),
+			};
+		case SEND_POST_DETAILS:
+			return {
+				...state,
+				sentPost: action.payload,
 			};
 		default:
 			return state;
