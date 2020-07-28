@@ -27,22 +27,24 @@ const Header = (props) => {
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
-				contentLabel='Example Modal'
+				contentLabel='Add post modal'
 				overlayClassName={styles.overlay}
 				className={styles['header__modal--add']}
 			>
 				<h5>Add post</h5>
 				<h2>Add post</h2>
-				<div className={styles.modal__post__title}>
+				<div className={styles.modal__title}>
 					<p>Title</p>
 					<input type='text' />
 				</div>
-				<div className={styles.modal__post__body}>
+				<div className={styles.modal__body}>
 					<p>Body</p>
 					<textarea />
 				</div>
-				<button onClick={() => closeModal()}>Cancel</button>
-				<button>Save</button>
+				<div className={styles.modal__buttons}>
+					<button onClick={() => closeModal()}>Cancel</button>
+					<button>Save</button>
+				</div>
 			</Modal>
 			<button
 				className={

@@ -90,7 +90,7 @@
           transform: translate(-50%, -50%);
   margin: auto;
   width: 450px;
-  height: 400px;
+  height: 420px;
   background-color: white;
   border: 3px solid black;
   text-align: center;
@@ -103,8 +103,23 @@
   text-align: left;
 }
 
-.modal__post__title,
-.modal__post__body {
+.header__modal--add button {
+  justify-self: flex-end;
+}
+
+.header__modal--add:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 25px;
+}
+
+.modal__title,
+.modal__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,36 +131,63 @@
           align-items: center;
 }
 
-.modal__post__title input,
-.modal__post__title textarea,
-.modal__post__body input,
-.modal__post__body textarea {
+.modal__title input,
+.modal__title textarea,
+.modal__body input,
+.modal__body textarea {
   padding: 0;
   width: 300px;
   margin: 0 20px 0 20px;
   border: 3px solid black;
 }
 
-.modal__post__title p,
-.modal__post__body p {
+.modal__title p,
+.modal__body p {
   font-size: 12px;
   font-weight: bold;
   margin: 0;
 }
 
-.modal__post__body {
+.modal__body {
   margin-top: 20px;
 }
 
-.modal__post__body textarea {
+.modal__body textarea {
   height: 150px;
 }
 
-.modal__post__body p {
+.modal__body p {
   -ms-flex-item-align: start;
       align-self: flex-start;
   letter-spacing: 1px;
   padding: 0;
+}
+
+.modal__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 30px 45px 0 0;
+}
+
+.modal__buttons button {
+  height: 40px;
+  width: 100px;
+  border: 3px solid black;
+  -webkit-box-shadow: 3px 3px 3px black;
+          box-shadow: 3px 3px 3px black;
+  margin-left: 20px;
+  outline: none;
+  background-color: white;
+  font-weight: bold;
+}
+
+.modal__buttons button:nth-child(2) {
+  background-color: #075394;
+  color: white;
 }
 
 .overlay {
