@@ -39,7 +39,7 @@ const Header = (props) => {
 				</div>
 				<div className={styles.modal__post__body}>
 					<p>Body</p>
-					<input type='text' />
+					<textarea />
 				</div>
 				<button onClick={() => closeModal()}>Cancel</button>
 				<button>Save</button>

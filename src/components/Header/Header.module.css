@@ -117,7 +117,9 @@
 }
 
 .modal__post__title input,
-.modal__post__body input {
+.modal__post__title textarea,
+.modal__post__body input,
+.modal__post__body textarea {
   padding: 0;
   width: 300px;
   margin: 0 20px 0 20px;
@@ -135,7 +137,7 @@
   margin-top: 20px;
 }
 
-.modal__post__body input {
+.modal__post__body textarea {
   height: 150px;
 }
 
