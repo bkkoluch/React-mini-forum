@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
-import { fetchComments, commentToggle } from '../../../actions/commentActions';
+import {
+	fetchComments,
+	commentToggle,
+	showCommentsModal,
+} from '../../../actions/commentActions';
 import Comment from '../../Comment/Comment';
 import Header from '../../Header/Header';
+import ModalPopup from '../../Modal/Modal';
 
 class PostDetails extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(fetchComments());
-	}
-
 	render() {
 		const { error, loading, comments } = this.props;
+		const openModal = () =>
+			this.props.dispatch(showCommentsModal(this.props.add));
 
 		if (error) {
 			return <div>Error! {error.message}</div>;
@@ -20,6 +23,8 @@ class PostDetails extends React.Component {
 		if (loading) {
 			return <div>Loading...</div>;
 		}
+
+		const modal = <ModalPopup isOpen={this.props.showModal} />;
 
 		return (
 			<div>
@@ -44,7 +49,9 @@ class PostDetails extends React.Component {
 							}
 							onClick={() => this.props.dispatch(commentToggle())}
 						>
-							Show comments
+							{this.props.show
+								? 'Hide comments'
+								: 'Show comments'}
 						</button>
 						<button
 							className={
@@ -54,9 +61,11 @@ class PostDetails extends React.Component {
 									  ]
 									: styles.hidden
 							}
+							onClick={() => openModal()}
 						>
 							Add Comment
 						</button>
+						{modal}
 					</div>
 					{this.props.show
 						? comments.map((comment) =>
@@ -85,6 +94,7 @@ const mapStateToProps = (state) => ({
 	body: state.posts.body,
 	comments: state.comments.comments,
 	show: state.comments.show,
+	showModal: state.comments.showModal,
 });
 
 export default connect(mapStateToProps)(PostDetails);

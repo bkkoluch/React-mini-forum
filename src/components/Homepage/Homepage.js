@@ -5,10 +5,6 @@ import styles from './Homepage.module.css';
 import User from '../User/User';
 
 class Homepage extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(fetchUsers());
-	}
-
 	render() {
 		const { error, loading, users } = this.props;
 

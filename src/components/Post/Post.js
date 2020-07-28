@@ -15,7 +15,7 @@ const Post = (props) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const clickOnPost = () => {
+	const getPostDetails = () => {
 		history.push('/post_details');
 		dispatch(getPostTitle(props.title));
 		dispatch(getPostBody(props.body));
@@ -39,7 +39,7 @@ const Post = (props) => {
 				icon={faAngleRight}
 				size='3x'
 				className={styles.post__container__arrow}
-				onClick={() => clickOnPost()}
+				onClick={() => getPostDetails()}
 			/>
 		</div>
 	);

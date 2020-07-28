@@ -13,6 +13,7 @@ const User = (props) => {
 		dispatch(getUsersId(props.id));
 		dispatch(getUsersName(props.name));
 	};
+
 	return (
 		<div className={styles.user__container}>
 			<p className={styles.user__name}>{props.name}</p>

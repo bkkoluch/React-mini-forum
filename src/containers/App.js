@@ -4,11 +4,15 @@ import Homepage from '../components/Homepage/Homepage';
 import UserDetails from '../components/User/UserDetails/UserDetails';
 import PostDetails from '../components/Post/PostDetails/PostDetails';
 import { fetchPosts } from './../actions/postActions';
+import { fetchUsers } from './../actions/userActions';
+import { fetchComments } from './../actions/commentActions';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(fetchPosts());
+		this.props.dispatch(fetchUsers());
+		this.props.dispatch(fetchComments());
 	}
 
 	render() {
@@ -31,3 +35,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(App);
+
+//TODO:
+//fix the send post and send comment issue (last letter is ommited)
+//add 'add comment' modal (done)
+//add 'adding comment'
+//refactor
+//loading screen
+//validation

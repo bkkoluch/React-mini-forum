@@ -3,13 +3,18 @@ import {
 	FETCH_COMMENTS_SUCCESS,
 	FETCH_COMMENTS_FAILURE,
 	COMMENT_TOGGLE,
+	SHOW_COMMENTS_MODAL,
+	ADD_COMMENT,
+	SEND_COMMENT_DETAILS,
 } from '../actions/commentActions';
 
 const initialState = {
 	comments: [],
-	loading: true,
+	loading: false,
 	error: null,
 	show: true,
+	showModal: false,
+	comment: null,
 };
 
 const commentsReducer = (state = initialState, action) => {
@@ -36,6 +41,21 @@ const commentsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				show: !state.show,
+			};
+		case SHOW_COMMENTS_MODAL:
+			return {
+				...state,
+				showModal: !state.showModal,
+			};
+		case ADD_COMMENT:
+			return {
+				...state,
+				comments: state.comments.concat(action.payload.comment),
+			};
+		case SEND_COMMENT_DETAILS:
+			return {
+				...state,
+				comment: action.payload,
 			};
 		default:
 			return state;

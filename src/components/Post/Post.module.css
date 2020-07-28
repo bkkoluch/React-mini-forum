@@ -11,10 +11,12 @@
 
 .post__container__trash {
   margin: 0 16px;
+  color: #075394;
 }
 
 .post__container__arrow {
   margin-left: auto;
   margin-right: 16px;
+  color: #075394;
 }
 /*# sourceMappingURL=Post.module.css.map */

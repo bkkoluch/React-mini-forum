@@ -4,6 +4,9 @@ export const FETCH_COMMENTS_BEGIN = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
 export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
 export const COMMENT_TOGGLE = 'COMMENT_TOGGLE';
+export const SHOW_COMMENTS_MODAL = 'SHOW_COMMENTS_MODAL';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const SEND_COMMENT_DETAILS = 'SEND_COMMENT_DETAILS';
 
 export const fetchCommentsBegin = () => ({
 	type: FETCH_COMMENTS_BEGIN,
@@ -18,6 +21,18 @@ export const fetchCommentsFailure = (error) => ({
 });
 export const commentToggle = () => ({
 	type: COMMENT_TOGGLE,
+});
+export const showCommentsModal = (showModal) => ({
+	type: SHOW_COMMENTS_MODAL,
+	payload: { showModal },
+});
+export const addComment = (comment) => ({
+	type: ADD_COMMENT,
+	payload: { comment },
+});
+export const sendCommentDetails = (name, email, body, postId) => ({
+	type: SEND_COMMENT_DETAILS,
+	payload: { name, email, body, postId },
 });
 
 export const fetchComments = () => {
