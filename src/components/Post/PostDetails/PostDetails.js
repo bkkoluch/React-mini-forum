@@ -11,10 +11,6 @@ import Header from '../../Header/Header';
 import ModalPopup from '../../Modal/Modal';
 
 class PostDetails extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(fetchComments());
-	}
-
 	render() {
 		const { error, loading, comments } = this.props;
 		const openModal = () =>

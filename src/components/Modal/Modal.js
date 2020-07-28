@@ -25,8 +25,14 @@ const ModalPopup = (props) => {
 
 	const toggleCommentModal = () => dispatch(showCommentsModal(props.isOpen));
 	const togglePostModal = () => dispatch(showPostModal(props.showPostModal));
-	const sendPost = () => dispatch(addPost(props.sentPost));
-	const sendComment = () => dispatch(addComment(props.sentComment));
+	const sendPost = () => {
+		dispatch(addPost(props.sentPost));
+		togglePostModal();
+	};
+	const sendComment = () => {
+		dispatch(addComment(props.sentComment));
+		toggleCommentModal();
+	};
 
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
