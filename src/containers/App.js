@@ -39,7 +39,7 @@ export default connect(null, mapDispatchToProps)(App);
 //TODO:
 //fix the send post and send comment issue (last letter is ommited)
 //add 'add comment' modal (done)
-//add 'adding comment'
+//add 'adding comment' (done)
 //refactor
 //loading screen
 //validation

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
 import {
-	fetchComments,
 	commentToggle,
 	showCommentsModal,
 } from '../../../actions/commentActions';

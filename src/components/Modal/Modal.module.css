@@ -120,6 +120,10 @@
   color: white;
 }
 
+.modal__buttons button:nth-child(2):disabled {
+  opacity: 0.5;
+}
+
 .modal__email {
   margin-top: 18px;
 }
