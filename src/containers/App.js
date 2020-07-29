@@ -37,9 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(null, mapDispatchToProps)(App);
 
 //TODO:
-//fix the send post and send comment issue (last letter is ommited)
 //add 'add comment' modal (done)
-//add 'adding comment'
+//add 'adding comment' (done)
+//loading screen (done)
+//validation (done)
+//add validation tooltips (done)
 //refactor
-//loading screen
-//validation
+//fix the send post and send comment issue (last letter is ommited)

@@ -86,6 +86,9 @@
 		&:nth-child(2) {
 			background-color: #075394;
 			color: white;
+			&:disabled {
+				opacity: 0.5;
+			}
 		}
 	}
 }

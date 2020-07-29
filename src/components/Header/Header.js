@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css';
+import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
 import { useDispatch, connect } from 'react-redux';
 import { deletePost, showPostModal } from '../../actions/postActions';
 import ModalPopup from '../Modal/Modal';
@@ -18,21 +20,30 @@ const Header = (props) => {
 
 	return (
 		<div className={styles.header__container}>
-			<button className={styles.header__backButton} onClick={goBack} />
+			<Tippy content='Click to go back'>
+				<button
+					className={styles.header__backButton}
+					onClick={goBack}
+				/>
+			</Tippy>
 			<p className={styles.header__name}>{props.name}</p>
-			<button
-				className={
-					!props.show ? styles.header__addButton : styles.hidden
-				}
-				onClick={() => toggleModal()}
-			/>
+			<Tippy content='Click to add a post'>
+				<button
+					className={
+						!props.show ? styles.header__addButton : styles.hidden
+					}
+					onClick={() => toggleModal()}
+				/>
+			</Tippy>
 			{modal}
-			<button
-				className={
-					props.show ? styles.header__deleteButton : styles.hidden
-				}
-				onClick={() => removePost(props.id)}
-			/>
+			<Tippy content='Click to remove a post'>
+				<button
+					className={
+						props.show ? styles.header__deleteButton : styles.hidden
+					}
+					onClick={() => removePost(props.id)}
+				/>
+			</Tippy>
 		</div>
 	);
 };
