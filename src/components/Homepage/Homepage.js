@@ -2,22 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Homepage.module.css';
 import User from '../User/User';
+import Spinner from './../Spinner/Spinner';
 
 class Homepage extends React.Component {
 	render() {
-		const { error, loading, users } = this.props;
-
-		if (error) {
-			return <div>Error! {error.message}</div>;
+		if (this.props.error) {
+			return <div>Error! {this.props.error.message}</div>;
 		}
 
-		if (loading) {
-			return <div>Loading...</div>;
+		if (this.props.loading) {
+			return (
+				<div className={styles.homepage__container}>
+					<Spinner />
+				</div>
+			);
 		}
 
 		return (
 			<div className={styles.homepage__container}>
-				{users.map((user) => (
+				{this.props.users.map((user) => (
 					<User
 						key={user.id}
 						id={user.id}
@@ -35,7 +38,7 @@ class Homepage extends React.Component {
 
 const mapStateToProps = (state) => ({
 	users: state.users.users,
-	loading: state.users.loading,
+	loading: state.comments.loading,
 	error: state.users.error,
 });
 

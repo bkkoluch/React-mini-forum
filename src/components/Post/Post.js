@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Post.module.css';
+import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
@@ -27,21 +29,31 @@ const Post = (props) => {
 	};
 
 	return (
-		<div className={styles.post__container}>
-			<FontAwesomeIcon
-				icon={faTrashAlt}
-				size='2x'
-				className={styles.post__container__trash}
-				onClick={() => removePost(props.id)}
-			/>
-			<p>{props.title}</p>
-			<FontAwesomeIcon
-				icon={faAngleRight}
-				size='3x'
-				className={styles.post__container__arrow}
-				onClick={() => getPostDetails()}
-			/>
-		</div>
+		<Tippy
+			content="Click on the arrow to go to post's details"
+			placement='top-end'
+			arrow=''
+		>
+			<div className={styles.post__container}>
+				<Tippy content='Click to remove a post'>
+					<div>
+						<FontAwesomeIcon
+							icon={faTrashAlt}
+							size='2x'
+							className={styles.post__container__trash}
+							onClick={() => removePost(props.id)}
+						/>
+					</div>
+				</Tippy>
+				<p>{props.title}</p>
+				<FontAwesomeIcon
+					icon={faAngleRight}
+					size='3x'
+					className={styles.post__container__arrow}
+					onClick={() => getPostDetails()}
+				/>
+			</div>
+		</Tippy>
 	);
 };
 

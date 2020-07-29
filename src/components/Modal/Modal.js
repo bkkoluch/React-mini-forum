@@ -47,12 +47,10 @@ const ModalPopup = (props) => {
 	const sendPost = () => {
 		dispatch(addPost(props.sentPost));
 		togglePostModal();
-		clearPostData();
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
 		toggleCommentModal();
-		clearCommentData();
 	};
 
 	const handlePostTitleChange = (e) => {

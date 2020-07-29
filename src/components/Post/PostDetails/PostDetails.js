@@ -11,17 +11,8 @@ import ModalPopup from '../../Modal/Modal';
 
 class PostDetails extends React.Component {
 	render() {
-		const { error, loading, comments } = this.props;
 		const openModal = () =>
 			this.props.dispatch(showCommentsModal(this.props.add));
-
-		if (error) {
-			return <div>Error! {error.message}</div>;
-		}
-
-		if (loading) {
-			return <div>Loading...</div>;
-		}
 
 		const modal = <ModalPopup isOpen={this.props.showModal} />;
 
@@ -67,7 +58,7 @@ class PostDetails extends React.Component {
 						{modal}
 					</div>
 					{this.props.show
-						? comments.map((comment) =>
+						? this.props.comments.map((comment) =>
 								comment.postId === this.props.id ? (
 									<Comment
 										key={comment.id}
