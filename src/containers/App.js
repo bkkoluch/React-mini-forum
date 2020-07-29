@@ -42,4 +42,5 @@ export default connect(null, mapDispatchToProps)(App);
 //add 'adding comment' (done)
 //refactor
 //loading screen
-//validation
+//validation (done)
+//add validation tooltips (done)

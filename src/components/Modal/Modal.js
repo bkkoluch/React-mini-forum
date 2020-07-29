@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Modal.module.css';
 import Modal from 'react-modal';
+import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
 import { useDispatch, connect } from 'react-redux';
 import {
 	showCommentsModal,
@@ -23,20 +25,34 @@ const ModalPopup = (props) => {
 	const [email, setEmail] = useState('');
 	const [commentBody, setCommentBody] = useState('');
 
-	const toggleCommentModal = () => dispatch(showCommentsModal(props.isOpen));
-	const togglePostModal = () => dispatch(showPostModal(props.showPostModal));
+	const clearCommentData = () => {
+		setName('');
+		setEmail('');
+		setCommentBody('');
+	};
+	const clearPostData = () => {
+		setTitle('');
+		setPostBody('');
+	};
+
+	const togglePostModal = () => {
+		dispatch(showPostModal(props.showPostModal));
+		clearPostData();
+	};
+	const toggleCommentModal = () => {
+		dispatch(showCommentsModal(props.isOpen));
+		clearCommentData();
+	};
+
 	const sendPost = () => {
 		dispatch(addPost(props.sentPost));
 		togglePostModal();
-		setTitle('');
-		setPostBody('');
+		clearPostData();
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
 		toggleCommentModal();
-		setName('');
-		setEmail('');
-		setCommentBody('');
+		clearCommentData();
 	};
 
 	const handlePostTitleChange = (e) => {
@@ -63,10 +79,10 @@ const ModalPopup = (props) => {
 
 	const validatePostModal = () => {
 		const titleValidation = title.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{5,12}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,10}$/
 		);
 		const bodyValidation = postBody.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{10,40}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,38}$/
 		);
 
 		if (titleValidation && bodyValidation) {
@@ -77,13 +93,13 @@ const ModalPopup = (props) => {
 
 	const validateCommentModal = () => {
 		const nameValidation = name.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{2,10}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,10}$/
 		);
 		const emailValidation = email.match(
-			/[\w-\.]{2,10}@([\w-]{2,5}\.)+[\w-]{2,4}$/
+			/[\w-\.]{2,10}@([\w-]{2,8}\.)+[\w-]{2,4}$/
 		);
 		const bodyValidation = commentBody.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{10,40}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,38}$/
 		);
 
 		if (nameValidation && emailValidation && bodyValidation) {
@@ -91,50 +107,6 @@ const ModalPopup = (props) => {
 		}
 		return true;
 	};
-
-	if (props.showCommentsModal) {
-		return (
-			<Modal
-				isOpen={props.isOpen}
-				onRequestClose={toggleCommentModal}
-				contentLabel='Add post modal'
-				overlayClassName={styles.overlay}
-				className={styles['modal__container--comment']}
-			>
-				<h5>Add comment</h5>
-				<h2>Add comment</h2>
-				<div className={styles.modal__title}>
-					<p>Name</p>
-					<input
-						type='text'
-						name='name'
-						onChange={handleNameChange}
-					/>
-				</div>
-				<div className={styles.modal__email}>
-					<p>Email</p>
-					<input
-						type='text'
-						name='email'
-						onChange={handleEmailChange}
-					/>
-				</div>
-				<div className={styles.modal__body}>
-					<p>Body</p>
-					<textarea name='body' onChange={handleCommentBodyChange} />
-				</div>
-				<div className={styles.modal__buttons}>
-					<button onClick={() => toggleCommentModal()}>Cancel</button>
-					<button
-						onClick={() => sendComment()}
-						disabled={validateCommentModal()}
-					>
-						Save
-					</button>
-				</div>
-			</Modal>
-		);
-	}
 
 	if (props.showPostModal) {
 		return (
@@ -149,21 +121,78 @@ const ModalPopup = (props) => {
 				<h2>Add post</h2>
 				<div className={styles.modal__title}>
 					<p>Title</p>
-					<input
-						type='text'
-						name='title'
-						onChange={handlePostTitleChange}
-					/>
+					<Tippy content='The name should start with a capital letter and be between 5-12 letters'>
+						<input
+							type='text'
+							name='title'
+							onChange={handlePostTitleChange}
+						/>
+					</Tippy>
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<textarea name='body' onChange={handlePostBodyChange} />
+					<Tippy content='The post body should be between 10-40 letters'>
+						<textarea name='body' onChange={handlePostBodyChange} />
+					</Tippy>
 				</div>
 				<div className={styles.modal__buttons}>
 					<button onClick={() => togglePostModal()}>Cancel</button>
 					<button
 						onClick={() => sendPost()}
 						disabled={validatePostModal()}
+					>
+						Save
+					</button>
+				</div>
+			</Modal>
+		);
+	}
+
+	if (props.showCommentsModal) {
+		return (
+			<Modal
+				isOpen={props.isOpen}
+				onRequestClose={toggleCommentModal}
+				contentLabel='Add post modal'
+				overlayClassName={styles.overlay}
+				className={styles['modal__container--comment']}
+			>
+				<h5>Add comment</h5>
+				<h2>Add comment</h2>
+				<div className={styles.modal__title}>
+					<p>Name</p>
+					<Tippy content='The name must start with a capital letter and be between 5-12 letters'>
+						<input
+							type='text'
+							name='name'
+							onChange={handleNameChange}
+						/>
+					</Tippy>
+				</div>
+				<div className={styles.modal__email}>
+					<p>Email</p>
+					<Tippy content='The email must be between 2-10 letters, the domain adress between 2-8 letters, top-level domain should be between 2-4 letters '>
+						<input
+							type='text'
+							name='email'
+							onChange={handleEmailChange}
+						/>
+					</Tippy>
+				</div>
+				<div className={styles.modal__body}>
+					<p>Body</p>
+					<Tippy content='The comment body must start with a capital letter and be between 10-40 letters'>
+						<textarea
+							name='body'
+							onChange={handleCommentBodyChange}
+						/>
+					</Tippy>
+				</div>
+				<div className={styles.modal__buttons}>
+					<button onClick={() => toggleCommentModal()}>Cancel</button>
+					<button
+						onClick={() => sendComment()}
+						disabled={validateCommentModal()}
 					>
 						Save
 					</button>
