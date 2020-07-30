@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './User.module.css';
 import { useDispatch } from 'react-redux';
-import { getUserDetails } from '../../actions/userActions';
+import { getUserDetails } from '../../actions/usersActions';
 import { useHistory } from 'react-router-dom';
 
 const User = (props) => {

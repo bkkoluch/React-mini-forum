@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from './PostDetails.module.css';
+
+import { connect } from 'react-redux';
 import {
 	commentToggle,
 	showCommentsModal,
-} from '../../../actions/commentActions';
+} from '../../../actions/commentsActions';
+
 import Comment from '../../Comment/Comment';
 import Header from '../../Header/Header';
 import ModalPopup from '../../Modal/Modal';

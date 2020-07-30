@@ -7,7 +7,7 @@ import {
 	ADD_COMMENT,
 	SEND_COMMENT_DETAILS,
 	DELETE_COMMENTS,
-} from '../actions/commentActions';
+} from '../actions/commentsActions';
 
 const initialState = {
 	comments: [],

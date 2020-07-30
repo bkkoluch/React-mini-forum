@@ -1,4 +1,4 @@
-import { handleErrors } from './postActions';
+import { handleErrors } from './postsActions';
 
 export const FETCH_USERS_BEGIN = 'FETCH_USERS_BEGIN';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';

@@ -1,4 +1,4 @@
-import { handleErrors } from './postActions';
+import { handleErrors } from './postsActions';
 
 export const FETCH_COMMENTS_BEGIN = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';

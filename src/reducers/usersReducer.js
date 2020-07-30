@@ -3,7 +3,7 @@ import {
 	FETCH_USERS_FAILURE,
 	FETCH_USERS_SUCCESS,
 	GET_USER_DETAILS,
-} from './../actions/userActions';
+} from './../actions/usersActions';
 
 const initialState = {
 	users: [],

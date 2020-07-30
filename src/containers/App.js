@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import { connect } from 'react-redux';
-import { fetchPosts } from './../actions/postActions';
-import { fetchUsers } from './../actions/userActions';
-import { fetchComments } from './../actions/commentActions';
+import { fetchPosts } from '../actions/postsActions';
+import { fetchUsers } from '../actions/usersActions';
+import { fetchComments } from '../actions/commentsActions';
 
 import Homepage from '../components/Homepage/Homepage';
 import UserDetails from '../components/User/UserDetails/UserDetails';

@@ -7,7 +7,7 @@ import {
 	SEND_POST_DETAILS,
 	SHOW_POST_MODAL,
 	GET_POST_DETAILS,
-} from './../actions/postActions';
+} from './../actions/postsActions';
 
 const initialState = {
 	posts: [],

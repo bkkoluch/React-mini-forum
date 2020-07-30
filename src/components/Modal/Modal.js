@@ -3,17 +3,18 @@ import styles from './Modal.module.css';
 import Modal from 'react-modal';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
+
 import { useDispatch, connect } from 'react-redux';
 import {
 	showCommentsModal,
 	addComment,
 	sendCommentDetails,
-} from '../../actions/commentActions';
+} from '../../actions/commentsActions';
 import {
 	addPost,
 	sendPostDetails,
 	showPostModal,
-} from '../../actions/postActions';
+} from '../../actions/postsActions';
 
 Modal.setAppElement('#root');
 

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './Post.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
-import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useHistory } from 'react-router-dom';
-import { deletePost, getPostsDetails } from '../../actions/postActions';
+import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 import { useDispatch } from 'react-redux';
-import { deleteComments } from '../../actions/commentActions';
+import { deleteComments } from '../../actions/commentsActions';
+import { deletePost, getPostsDetails } from '../../actions/postsActions';
 
 const Post = (props) => {
 	const history = useHistory();

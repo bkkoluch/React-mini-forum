@@ -1,6 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from './Homepage.module.css';
+
+import { connect } from 'react-redux';
+
 import User from '../User/User';
 import Spinner from './../Spinner/Spinner';
 
