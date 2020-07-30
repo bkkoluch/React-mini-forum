@@ -22,4 +22,16 @@
 .comment__details__email {
   color: #075394;
 }
+
+@media screen and (max-width: 500px) {
+  .comment__details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .comment__details p {
+    word-wrap: break-word;
+  }
+}
 /*# sourceMappingURL=Comments.module.css.map */

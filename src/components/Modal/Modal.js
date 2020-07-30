@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import styles from './Modal.module.css';
 import Modal from 'react-modal';
 import Tippy from '@tippy.js/react';
@@ -20,19 +20,35 @@ Modal.setAppElement('#root');
 
 const ModalPopup = (props) => {
 	const dispatch = useDispatch();
-	const [title, setTitle] = useState('');
-	const [postBody, setPostBody] = useState('');
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [commentBody, setCommentBody] = useState('');
+	const [userInput, setUserInput] = useReducer(
+		(state, newState) => ({ ...state, ...newState }),
+		{
+			title: '',
+			postBody: '',
+			name: '',
+			email: '',
+			commentBody: '',
+		}
+	);
 
+	const handleChange = (e) => {
+		setUserInput({ [e.target.name]: e.target.value });
+		sendPostData();
+		sendCommentData();
+	};
+
+	const cleanData = () => {
+		Object.keys(userInput).forEach((key) => {
+			userInput[key] = '';
+		});
+	};
 	const sendPostData = () =>
 		dispatch(
 			sendPostDetails(
 				props.userId,
 				props.posts.length + 1,
-				title,
-				postBody
+				userInput.title,
+				userInput.postBody
 			)
 		);
 	const sendCommentData = () =>
@@ -40,28 +56,19 @@ const ModalPopup = (props) => {
 			sendCommentDetails(
 				props.postId,
 				props.comments.length + 1,
-				name,
-				email,
-				commentBody
+				userInput.name,
+				userInput.email,
+				userInput.commentBody
 			)
 		);
-	const clearPostData = () => {
-		setTitle('');
-		setPostBody('');
-	};
-	const clearCommentData = () => {
-		setName('');
-		setEmail('');
-		setCommentBody('');
-	};
 
 	const togglePostModal = () => {
 		dispatch(showPostModal(props.showPostModal));
-		clearPostData();
+		cleanData();
 	};
 	const toggleCommentModal = () => {
 		dispatch(showCommentsModal(props.isOpen));
-		clearCommentData();
+		cleanData();
 	};
 
 	const sendPost = () => {
@@ -73,33 +80,11 @@ const ModalPopup = (props) => {
 		toggleCommentModal();
 	};
 
-	const handlePostTitleChange = (e) => {
-		setTitle(e.target.value);
-		sendPostData();
-	};
-	const handlePostBodyChange = (e) => {
-		setPostBody(e.target.value);
-		sendPostData();
-	};
-
-	const handleNameChange = (e) => {
-		setName(e.target.value);
-		sendCommentData();
-	};
-	const handleEmailChange = (e) => {
-		setEmail(e.target.value);
-		sendCommentData();
-	};
-	const handleCommentBodyChange = (e) => {
-		setCommentBody(e.target.value);
-		sendCommentData();
-	};
-
 	const validatePostModal = () => {
-		const titleValidation = title.match(
+		const titleValidation = userInput.title.match(
 			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,12}$/
 		);
-		const bodyValidation = postBody.match(
+		const bodyValidation = userInput.postBody.match(
 			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,48}$/
 		);
 
@@ -110,13 +95,13 @@ const ModalPopup = (props) => {
 	};
 
 	const validateCommentModal = () => {
-		const nameValidation = name.match(
+		const nameValidation = userInput.name.match(
 			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,10}$/
 		);
-		const emailValidation = email.match(
+		const emailValidation = userInput.email.match(
 			/[\w-\.]{2,10}@([\w-]{2,8}\.)+[\w-]{2,4}$/
 		);
-		const bodyValidation = commentBody.match(
+		const bodyValidation = userInput.commentBody.match(
 			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,38}$/
 		);
 
@@ -143,14 +128,19 @@ const ModalPopup = (props) => {
 						<input
 							type='text'
 							name='title'
-							onChange={handlePostTitleChange}
+							value={userInput.title}
+							onChange={handleChange}
 						/>
 					</Tippy>
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
 					<Tippy content='The post body should be between 10-50 letters'>
-						<textarea name='body' onChange={handlePostBodyChange} />
+						<textarea
+							name='postBody'
+							onChange={handleChange}
+							value={userInput.postBody}
+						/>
 					</Tippy>
 				</div>
 				<div className={styles.modal__buttons}>
@@ -183,7 +173,8 @@ const ModalPopup = (props) => {
 						<input
 							type='text'
 							name='name'
-							onChange={handleNameChange}
+							value={userInput.name}
+							onChange={handleChange}
 						/>
 					</Tippy>
 				</div>
@@ -193,7 +184,8 @@ const ModalPopup = (props) => {
 						<input
 							type='text'
 							name='email'
-							onChange={handleEmailChange}
+							value={userInput.email}
+							onChange={handleChange}
 						/>
 					</Tippy>
 				</div>
@@ -201,8 +193,9 @@ const ModalPopup = (props) => {
 					<p>Body</p>
 					<Tippy content='The comment body must start with a capital letter and be between 10-40 letters'>
 						<textarea
-							name='body'
-							onChange={handleCommentBodyChange}
+							name='commentBody'
+							value={userInput.commentBody}
+							onChange={handleChange}
 						/>
 					</Tippy>
 				</div>

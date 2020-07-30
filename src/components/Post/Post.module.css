@@ -19,4 +19,11 @@
 .post__container__trash {
   margin: 0 16px;
 }
+
+@media screen and (max-width: 500px) {
+  .post__container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 /*# sourceMappingURL=Post.module.css.map */

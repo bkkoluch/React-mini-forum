@@ -110,3 +110,24 @@
 	bottom: 0;
 	background-color: $overlay;
 }
+
+@media screen and (max-width: 500px) {
+	.modal__container--post {
+		width: 350px;
+	}
+	.modal__container--comment {
+		width: 350px;
+		height: 480px;
+	}
+	.modal__title,
+	.modal__body,
+	.modal__email {
+		flex-direction: column;
+		p {
+			align-self: center;
+		}
+	}
+	.modal__buttons {
+		margin: 15px 25px 0 0;
+	}
+}

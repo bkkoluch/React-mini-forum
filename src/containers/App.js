@@ -44,5 +44,5 @@ export default connect(null, mapDispatchToProps)(App);
 //loading screen (done)
 //validation (done)
 //add validation tooltips (done)
-//refactor
+//refactor (done)
 //fix the send post and send comment issue (last letter is ommited)
