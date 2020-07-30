@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Homepage from '../components/Homepage/Homepage';
-import UserDetails from '../components/User/UserDetails/UserDetails';
-import PostDetails from '../components/Post/PostDetails/PostDetails';
+import { connect } from 'react-redux';
 import { fetchPosts } from './../actions/postActions';
 import { fetchUsers } from './../actions/userActions';
 import { fetchComments } from './../actions/commentActions';
-import { connect } from 'react-redux';
+
+import Homepage from '../components/Homepage/Homepage';
+import UserDetails from '../components/User/UserDetails/UserDetails';
+import PostDetails from '../components/Post/PostDetails/PostDetails';
 
 class App extends React.Component {
 	componentDidMount() {

@@ -8,15 +8,15 @@
   margin: auto;
   width: 450px;
   height: 420px;
-  background-color: white;
-  border: 3px solid black;
+  background-color: #fff;
+  border: 3px solid #000;
   text-align: center;
 }
 
 .modal__container--comment h5,
 .modal__container--post h5 {
   margin: 0;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #000;
   padding: 2px;
   text-align: left;
 }
@@ -31,7 +31,7 @@
   content: '';
   width: 100%;
   height: 3px;
-  background-color: black;
+  background-color: #000;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -65,7 +65,7 @@
   padding: 0;
   width: 300px;
   margin: 0 20px 0 20px;
-  border: 3px solid black;
+  border: 3px solid #000;
   resize: none;
 }
 
@@ -106,18 +106,18 @@
   cursor: pointer;
   height: 40px;
   width: 100px;
-  border: 3px solid black;
-  -webkit-box-shadow: 3px 3px 3px black;
-          box-shadow: 3px 3px 3px black;
+  border: 3px solid #000;
+  -webkit-box-shadow: 3px 3px 3px #000;
+          box-shadow: 3px 3px 3px #000;
   margin-left: 20px;
   outline: none;
-  background-color: white;
+  background-color: #fff;
   font-weight: bold;
 }
 
 .modal__buttons button:nth-child(2) {
   background-color: #075394;
-  color: white;
+  color: #fff;
 }
 
 .modal__buttons button:nth-child(2):disabled {

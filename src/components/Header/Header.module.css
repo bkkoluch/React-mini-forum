@@ -8,10 +8,6 @@
   margin: 48px 80px 80px 80px;
 }
 
-.header__container button {
-  justify-self: flex-start;
-}
-
 .header__name {
   font-size: 20px;
   letter-spacing: 1px;
@@ -32,8 +28,8 @@
 }
 
 .header__backButton {
-  border-top: 2px solid #000;
-  border-left: 2px solid #000;
+  border-top: 2px solid #075394;
+  border-left: 2px solid #075394;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }

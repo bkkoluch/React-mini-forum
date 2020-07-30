@@ -5,18 +5,18 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 3px solid black;
+  border: 3px solid #000;
   margin: 0 80px 16px 80px;
 }
 
-.post__container__trash {
-  margin: 0 16px;
-  color: #075394;
-}
-
+.post__container__trash,
 .post__container__arrow {
   margin-left: auto;
   margin-right: 16px;
   color: #075394;
+}
+
+.post__container__trash {
+  margin: 0 16px;
 }
 /*# sourceMappingURL=Post.module.css.map */
