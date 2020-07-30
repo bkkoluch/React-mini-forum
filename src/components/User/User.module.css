@@ -6,7 +6,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 3px solid black;
+  border: 3px solid #000;
   min-height: 280px;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 18%;
@@ -44,16 +44,15 @@
   width: 200px;
   height: 70px;
   background-color: transparent;
-  border: 2px solid black;
-  -webkit-box-shadow: 2px 2px 2px black;
-          box-shadow: 2px 2px 2px black;
+  border: 3px solid #000;
+  -webkit-box-shadow: 2px 2px 2px #000;
+          box-shadow: 2px 2px 2px #000;
   margin-top: 32px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 18px;
   text-align: center;
-  line-height: 70px;
   text-decoration: none;
   outline: none;
   cursor: pointer;

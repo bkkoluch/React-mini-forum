@@ -1,7 +1,7 @@
 .spinner,
 .spinner:before,
 .spinner:after {
-  background: #000000;
+  background: #000;
   -webkit-animation: spin 1s infinite ease-in-out;
   animation: spin 1s infinite ease-in-out;
   width: 1em;
@@ -9,7 +9,7 @@
 }
 
 .spinner {
-  color: #ffffff;
+  color: #fff;
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;

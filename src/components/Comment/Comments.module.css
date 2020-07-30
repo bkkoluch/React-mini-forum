@@ -1,5 +1,5 @@
 .comment__container {
-  border: 3px solid black;
+  border: 3px solid #000;
   margin: 8px 0;
   padding: 16px;
 }
@@ -16,13 +16,22 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 16px;
-}
-
-.comment__details p {
   font-weight: bold;
 }
 
 .comment__details__email {
   color: #075394;
+}
+
+@media screen and (max-width: 500px) {
+  .comment__details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .comment__details p {
+    word-wrap: break-word;
+  }
 }
 /*# sourceMappingURL=Comments.module.css.map */

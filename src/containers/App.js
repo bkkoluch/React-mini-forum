@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postsActions';
+import { fetchUsers } from '../actions/usersActions';
+import { fetchComments } from '../actions/commentsActions';
+
 import Homepage from '../components/Homepage/Homepage';
 import UserDetails from '../components/User/UserDetails/UserDetails';
 import PostDetails from '../components/Post/PostDetails/PostDetails';
-import { fetchPosts } from './../actions/postActions';
-import { fetchUsers } from './../actions/userActions';
-import { fetchComments } from './../actions/commentActions';
-import { connect } from 'react-redux';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -42,5 +44,5 @@ export default connect(null, mapDispatchToProps)(App);
 //loading screen (done)
 //validation (done)
 //add validation tooltips (done)
-//refactor
+//refactor (done)
 //fix the send post and send comment issue (last letter is ommited)

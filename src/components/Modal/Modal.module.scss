@@ -1,3 +1,5 @@
+@import '../../utils/variables.scss';
+
 .modal__container--comment,
 .modal__container--post {
 	position: absolute;
@@ -7,12 +9,12 @@
 	margin: auto;
 	width: 450px;
 	height: 420px;
-	background-color: white;
-	border: 3px solid black;
+	background-color: #fff;
+	border: $border;
 	text-align: center;
 	h5 {
 		margin: 0;
-		border-bottom: 3px solid black;
+		border-bottom: $border;
 		padding: 2px;
 		text-align: left;
 	}
@@ -24,7 +26,7 @@
 		content: '';
 		width: 100%;
 		height: 3px;
-		background-color: black;
+		background-color: #000;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -47,7 +49,7 @@
 		padding: 0;
 		width: 300px;
 		margin: 0 20px 0 20px;
-		border: 3px solid black;
+		border: $border;
 		resize: none;
 	}
 	p {
@@ -77,15 +79,15 @@
 		cursor: pointer;
 		height: 40px;
 		width: 100px;
-		border: 3px solid black;
-		box-shadow: 3px 3px 3px black;
+		border: $border;
+		box-shadow: 3px 3px 3px #000;
 		margin-left: 20px;
 		outline: none;
-		background-color: white;
+		background-color: #fff;
 		font-weight: bold;
 		&:nth-child(2) {
-			background-color: #075394;
-			color: white;
+			background-color: $details;
+			color: #fff;
 			&:disabled {
 				opacity: 0.5;
 			}
@@ -106,5 +108,26 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(100, 100, 100, 0.5);
+	background-color: $overlay;
+}
+
+@media screen and (max-width: 500px) {
+	.modal__container--post {
+		width: 350px;
+	}
+	.modal__container--comment {
+		width: 350px;
+		height: 480px;
+	}
+	.modal__title,
+	.modal__body,
+	.modal__email {
+		flex-direction: column;
+		p {
+			align-self: center;
+		}
+	}
+	.modal__buttons {
+		margin: 15px 25px 0 0;
+	}
 }

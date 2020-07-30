@@ -2,8 +2,11 @@ import React from 'react';
 import styles from './Header.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
+
 import { useDispatch, connect } from 'react-redux';
-import { deletePost, showPostModal } from '../../actions/postActions';
+import { deletePost, showPostModal } from '../../actions/postsActions';
+import { deleteComments } from '../../actions/commentsActions';
+
 import ModalPopup from '../Modal/Modal';
 
 const Header = (props) => {
@@ -11,8 +14,9 @@ const Header = (props) => {
 
 	const toggleModal = () => dispatch(showPostModal(props.showPostModal));
 	const goBack = () => props.history.goBack();
-	const removePost = (id) => {
-		dispatch(deletePost(id));
+	const removePost = () => {
+		dispatch(deleteComments(props.id));
+		dispatch(deletePost(props.id));
 		goBack();
 	};
 

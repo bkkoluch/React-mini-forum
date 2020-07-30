@@ -1,16 +1,16 @@
+@import '../../utils/variables.scss';
+
 .header__container {
 	display: flex;
 	justify-content: space-between;
 	margin: 48px 80px 80px 80px;
-	button {
-		justify-self: flex-start;
-	}
 }
 
 .header__name {
 	font-size: 20px;
 	letter-spacing: 1px;
 	font-weight: bold;
+	align-self: center;
 }
 
 .header__backButton,
@@ -25,15 +25,15 @@
 }
 
 .header__backButton {
-	border-top: 2px solid #000;
-	border-left: 2px solid #000;
+	border-top: 2px solid $details;
+	border-left: 2px solid $details;
 	transform: rotate(-45deg);
 	&:after {
 		content: '';
 		display: block;
 		width: 2px;
 		height: 45px;
-		background-color: #075394;
+		background-color: $details;
 		transform: rotate(-45deg) translate(12px);
 		left: 0;
 		top: 0;
@@ -52,7 +52,7 @@
 		left: 0;
 		width: 32px;
 		height: 2px;
-		background-color: #075394;
+		background-color: $details;
 	}
 	&:before {
 		transform: rotate(90deg);
@@ -67,4 +67,10 @@
 
 .hidden {
 	display: none;
+}
+
+@media screen and (max-width: 500px) {
+	.header__container {
+		flex-direction: column;
+	}
 }

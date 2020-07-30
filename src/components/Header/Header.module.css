@@ -8,14 +8,13 @@
   margin: 48px 80px 80px 80px;
 }
 
-.header__container button {
-  justify-self: flex-start;
-}
-
 .header__name {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: bold;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .header__backButton,
@@ -32,8 +31,8 @@
 }
 
 .header__backButton {
-  border-top: 2px solid #000;
-  border-left: 2px solid #000;
+  border-top: 2px solid #075394;
+  border-left: 2px solid #075394;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -80,5 +79,14 @@
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .header__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=Header.module.css.map */

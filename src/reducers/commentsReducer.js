@@ -6,7 +6,8 @@ import {
 	SHOW_COMMENTS_MODAL,
 	ADD_COMMENT,
 	SEND_COMMENT_DETAILS,
-} from '../actions/commentActions';
+	DELETE_COMMENTS,
+} from '../actions/commentsActions';
 
 const initialState = {
 	comments: [],
@@ -51,6 +52,13 @@ const commentsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				comments: state.comments.concat(action.payload.comment),
+			};
+		case DELETE_COMMENTS:
+			return {
+				...state,
+				comments: state.comments.filter(
+					(comment) => comment.postId !== action.payload.id
+				),
 			};
 		case SEND_COMMENT_DETAILS:
 			return {

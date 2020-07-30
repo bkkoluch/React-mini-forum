@@ -2,15 +2,15 @@ import {
 	FETCH_USERS_BEGIN,
 	FETCH_USERS_FAILURE,
 	FETCH_USERS_SUCCESS,
-	GET_USER_ID,
-	GET_USER_NAME,
-} from './../actions/userActions';
+	GET_USER_DETAILS,
+} from './../actions/usersActions';
 
 const initialState = {
 	users: [],
 	loading: false,
 	error: null,
 	id: null,
+	name: null,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -34,14 +34,10 @@ const usersReducer = (state = initialState, action) => {
 				error: action.payload.error,
 				users: [],
 			};
-		case GET_USER_ID:
+		case GET_USER_DETAILS:
 			return {
 				...state,
 				id: action.payload.id,
-			};
-		case GET_USER_NAME:
-			return {
-				...state,
 				name: action.payload.name,
 			};
 		default:

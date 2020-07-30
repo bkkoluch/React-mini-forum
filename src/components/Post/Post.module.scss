@@ -1,17 +1,26 @@
+@import '../../utils/variables.scss';
+
 .post__container {
 	display: flex;
 	align-items: center;
-	border: 3px solid black;
+	border: $border;
 	margin: 0 80px 16px 80px;
+}
+
+.post__container__trash,
+.post__container__arrow {
+	margin-left: auto;
+	margin-right: 16px;
+	color: $details;
 }
 
 .post__container__trash {
 	margin: 0 16px;
-	color: #075394;
 }
 
-.post__container__arrow {
-	margin-left: auto;
-	margin-right: 16px;
-	color: #075394;
+@media screen and (max-width: 500px) {
+	.post__container {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
