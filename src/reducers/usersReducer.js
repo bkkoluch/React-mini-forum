@@ -11,6 +11,7 @@ const initialState = {
 	loading: false,
 	error: null,
 	id: null,
+	name: null,
 };
 
 const usersReducer = (state = initialState, action) => {

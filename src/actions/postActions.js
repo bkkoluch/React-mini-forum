@@ -48,9 +48,9 @@ export const addPost = (post) => ({
 	payload: { post },
 });
 
-export const sendPostDetails = (userId, title, body) => ({
+export const sendPostDetails = (userId, id, title, body) => ({
 	type: SEND_POST_DETAILS,
-	payload: { userId, title, body },
+	payload: { userId, id, title, body },
 });
 
 export const showPostModal = (showModal) => ({

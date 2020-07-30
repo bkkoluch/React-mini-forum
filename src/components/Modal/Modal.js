@@ -25,14 +25,33 @@ const ModalPopup = (props) => {
 	const [email, setEmail] = useState('');
 	const [commentBody, setCommentBody] = useState('');
 
+	const sendPostData = () =>
+		dispatch(
+			sendPostDetails(
+				props.userId,
+				props.posts.length + 1,
+				title,
+				postBody
+			)
+		);
+	const sendCommentData = () =>
+		dispatch(
+			sendCommentDetails(
+				props.postId,
+				props.comments.length + 1,
+				name,
+				email,
+				commentBody
+			)
+		);
+	const clearPostData = () => {
+		setTitle('');
+		setPostBody('');
+	};
 	const clearCommentData = () => {
 		setName('');
 		setEmail('');
 		setCommentBody('');
-	};
-	const clearPostData = () => {
-		setTitle('');
-		setPostBody('');
 	};
 
 	const togglePostModal = () => {
@@ -55,32 +74,32 @@ const ModalPopup = (props) => {
 
 	const handlePostTitleChange = (e) => {
 		setTitle(e.target.value);
-		dispatch(sendPostDetails(props.userId, title, postBody));
+		sendPostData();
 	};
 	const handlePostBodyChange = (e) => {
 		setPostBody(e.target.value);
-		dispatch(sendPostDetails(props.userId, title, postBody));
+		sendPostData();
 	};
 
 	const handleNameChange = (e) => {
 		setName(e.target.value);
-		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
+		sendCommentData();
 	};
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value);
-		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
+		sendCommentData();
 	};
 	const handleCommentBodyChange = (e) => {
 		setCommentBody(e.target.value);
-		dispatch(sendCommentDetails(name, email, commentBody, props.postId));
+		sendCommentData();
 	};
 
 	const validatePostModal = () => {
 		const titleValidation = title.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,10}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,12}$/
 		);
 		const bodyValidation = postBody.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,38}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,48}$/
 		);
 
 		if (titleValidation && bodyValidation) {
@@ -119,7 +138,7 @@ const ModalPopup = (props) => {
 				<h2>Add post</h2>
 				<div className={styles.modal__title}>
 					<p>Title</p>
-					<Tippy content='The name should start with a capital letter and be between 5-12 letters'>
+					<Tippy content='The name should start with a capital letter and be between 5-15 letters'>
 						<input
 							type='text'
 							name='title'
@@ -129,7 +148,7 @@ const ModalPopup = (props) => {
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<Tippy content='The post body should be between 10-40 letters'>
+					<Tippy content='The post body should be between 10-50 letters'>
 						<textarea name='body' onChange={handlePostBodyChange} />
 					</Tippy>
 				</div>
@@ -209,6 +228,8 @@ const mapStateToProps = (state) => ({
 	sentComment: state.comments.comment,
 	userId: state.users.id,
 	postId: state.posts.id,
+	comments: state.comments.comments,
+	posts: state.posts.posts,
 });
 
 export default connect(mapStateToProps)(ModalPopup);

@@ -15,6 +15,10 @@ const initialState = {
 	posts: [],
 	loading: false,
 	error: null,
+	title: null,
+	body: null,
+	id: null,
+	sentPost: null,
 	showPostModal: false,
 };
 

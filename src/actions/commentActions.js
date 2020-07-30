@@ -30,9 +30,9 @@ export const addComment = (comment) => ({
 	type: ADD_COMMENT,
 	payload: { comment },
 });
-export const sendCommentDetails = (name, email, body, postId) => ({
+export const sendCommentDetails = (postId, id, name, email, body) => ({
 	type: SEND_COMMENT_DETAILS,
-	payload: { name, email, body, postId },
+	payload: { postId, id, name, email, body },
 });
 
 export const fetchComments = () => {
