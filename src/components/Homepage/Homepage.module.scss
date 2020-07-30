@@ -2,6 +2,9 @@
 
 * {
 	font-family: 'Roboto Mono', monospace;
+	p {
+		word-wrap: break-word;
+	}
 }
 
 .homepage__container {
