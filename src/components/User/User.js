@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './User.module.css';
 import { useDispatch } from 'react-redux';
-import { getUsersId, getUsersName } from '../../actions/userActions';
+import { getUserDetails } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
 
 const User = (props) => {
@@ -10,8 +10,7 @@ const User = (props) => {
 
 	const getData = () => {
 		history.push('/user_details');
-		dispatch(getUsersId(props.id));
-		dispatch(getUsersName(props.name));
+		dispatch(getUserDetails(props.id, props.name));
 	};
 
 	return (

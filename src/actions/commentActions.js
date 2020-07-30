@@ -6,6 +6,7 @@ export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
 export const COMMENT_TOGGLE = 'COMMENT_TOGGLE';
 export const SHOW_COMMENTS_MODAL = 'SHOW_COMMENTS_MODAL';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const DELETE_COMMENTS = 'DELETE_COMMENTS';
 export const SEND_COMMENT_DETAILS = 'SEND_COMMENT_DETAILS';
 
 export const fetchCommentsBegin = () => ({
@@ -29,6 +30,10 @@ export const showCommentsModal = (showModal) => ({
 export const addComment = (comment) => ({
 	type: ADD_COMMENT,
 	payload: { comment },
+});
+export const deleteComments = (id) => ({
+	type: DELETE_COMMENTS,
+	payload: { id },
 });
 export const sendCommentDetails = (postId, id, name, email, body) => ({
 	type: SEND_COMMENT_DETAILS,

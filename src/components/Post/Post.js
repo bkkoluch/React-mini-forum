@@ -5,13 +5,9 @@ import 'tippy.js/dist/tippy.css';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
-import {
-	getPostTitle,
-	getPostBody,
-	getPostId,
-	deletePost,
-} from '../../actions/postActions';
+import { deletePost, getPostsDetails } from '../../actions/postActions';
 import { useDispatch } from 'react-redux';
+import { deleteComments } from '../../actions/commentActions';
 
 const Post = (props) => {
 	const history = useHistory();
@@ -19,12 +15,11 @@ const Post = (props) => {
 
 	const getPostDetails = () => {
 		history.push('/post_details');
-		dispatch(getPostTitle(props.title));
-		dispatch(getPostBody(props.body));
-		dispatch(getPostId(props.id));
+		dispatch(getPostsDetails(props.id, props.title, props.body));
 	};
 
 	const removePost = (id) => {
+		dispatch(deleteComments(id));
 		dispatch(deletePost(id));
 	};
 

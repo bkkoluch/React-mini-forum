@@ -2,13 +2,11 @@ import {
 	FETCH_POSTS_BEGIN,
 	FETCH_POSTS_SUCCESS,
 	FETCH_POSTS_FAILURE,
-	GET_POST_TITLE,
-	GET_POST_BODY,
-	GET_POST_ID,
 	DELETE_POST,
 	ADD_POST,
 	SEND_POST_DETAILS,
 	SHOW_POST_MODAL,
+	GET_POST_DETAILS,
 } from './../actions/postActions';
 
 const initialState = {
@@ -43,20 +41,12 @@ const postsReducer = (state = initialState, action) => {
 				error: action.payload.error,
 				posts: [],
 			};
-		case GET_POST_TITLE:
-			return {
-				...state,
-				title: action.payload.title,
-			};
-		case GET_POST_BODY:
-			return {
-				...state,
-				body: action.payload.body,
-			};
-		case GET_POST_ID:
+		case GET_POST_DETAILS:
 			return {
 				...state,
 				id: action.payload.id,
+				title: action.payload.title,
+				body: action.payload.body,
 			};
 		case DELETE_POST:
 			return {
