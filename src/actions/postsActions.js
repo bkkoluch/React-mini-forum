@@ -1,6 +1,7 @@
 export const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
+export const GET_POSTS_AMOUNT = 'GET_POSTS_AMOUNT';
 export const GET_POST_DETAILS = 'GET_POST_DETAILS';
 export const ADD_POST = 'ADD_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -17,6 +18,10 @@ export const fetchPostsSuccess = (posts) => ({
 export const fetchPostsFailure = (error) => ({
 	type: FETCH_POSTS_FAILURE,
 	payload: { error },
+});
+export const getPostsAmount = (amount) => ({
+	type: GET_POSTS_AMOUNT,
+	payload: { amount },
 });
 export const getPostsDetails = (id, title, body) => ({
 	type: GET_POST_DETAILS,

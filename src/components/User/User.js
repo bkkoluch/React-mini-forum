@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './User.module.css';
-import { useDispatch } from 'react-redux';
-import { getUserDetails } from '../../actions/usersActions';
 import { useHistory } from 'react-router-dom';
+import styles from './User.module.css';
+
+import { useDispatch, connect } from 'react-redux';
+import { getUserDetails } from '../../actions/usersActions';
+import { getPostsAmount } from '../../actions/postsActions';
 
 const User = (props) => {
 	const history = useHistory();
@@ -11,6 +13,7 @@ const User = (props) => {
 	const getData = () => {
 		history.push('/user_details');
 		dispatch(getUserDetails(props.id, props.name));
+		dispatch(getPostsAmount(props.posts.posts.length));
 	};
 
 	return (
@@ -32,4 +35,8 @@ const User = (props) => {
 	);
 };
 
-export default User;
+const mapStateToProps = (state) => ({
+	posts: state.posts,
+});
+
+export default connect(mapStateToProps)(User);
