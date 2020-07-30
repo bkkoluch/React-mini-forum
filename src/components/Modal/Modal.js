@@ -14,6 +14,7 @@ import {
 	addPost,
 	sendPostDetails,
 	showPostModal,
+	getPostsAmount,
 } from '../../actions/postsActions';
 
 Modal.setAppElement('#root');
@@ -42,11 +43,12 @@ const ModalPopup = (props) => {
 			userInput[key] = '';
 		});
 	};
+
 	const sendPostData = () =>
 		dispatch(
 			sendPostDetails(
 				props.userId,
-				props.posts.length + 1,
+				props.amount + 1,
 				userInput.title,
 				userInput.postBody
 			)
@@ -74,6 +76,7 @@ const ModalPopup = (props) => {
 	const sendPost = () => {
 		dispatch(addPost(props.sentPost));
 		togglePostModal();
+		dispatch(getPostsAmount(props.amount + 1));
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
@@ -224,6 +227,7 @@ const mapStateToProps = (state) => ({
 	postId: state.posts.id,
 	comments: state.comments.comments,
 	posts: state.posts.posts,
+	amount: state.posts.amount,
 });
 
 export default connect(mapStateToProps)(ModalPopup);

@@ -2,6 +2,7 @@ import {
 	FETCH_POSTS_BEGIN,
 	FETCH_POSTS_SUCCESS,
 	FETCH_POSTS_FAILURE,
+	GET_POSTS_AMOUNT,
 	DELETE_POST,
 	ADD_POST,
 	SEND_POST_DETAILS,
@@ -13,9 +14,10 @@ const initialState = {
 	posts: [],
 	loading: false,
 	error: null,
+	amount: 0,
 	title: null,
 	body: null,
-	id: null,
+	id: 0,
 	sentPost: null,
 	showPostModal: false,
 };
@@ -40,6 +42,11 @@ const postsReducer = (state = initialState, action) => {
 				loading: false,
 				error: action.payload.error,
 				posts: [],
+			};
+		case GET_POSTS_AMOUNT:
+			return {
+				...state,
+				amount: action.payload.amount,
 			};
 		case GET_POST_DETAILS:
 			return {
