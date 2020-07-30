@@ -1,4 +1,4 @@
-@import '../../utils/variables.scss';
+@import '../../../utils//variables.scss';
 
 .postDetails__container {
 	margin: 0 80px;
@@ -30,4 +30,10 @@
 
 .hidden {
 	display: none;
+}
+
+@media screen and (max-width: 500px) {
+	.postDetails__container {
+		margin: 0;
+	}
 }

@@ -34,4 +34,10 @@
 .hidden {
   display: none;
 }
+
+@media screen and (max-width: 500px) {
+  .postDetails__container {
+    margin: 0;
+  }
+}
 /*# sourceMappingURL=PostDetails.module.css.map */
