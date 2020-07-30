@@ -85,7 +85,7 @@ const ModalPopup = (props) => {
 			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{3,12}$/
 		);
 		const bodyValidation = userInput.postBody.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,48}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,498}$/
 		);
 
 		if (titleValidation && bodyValidation) {
@@ -102,7 +102,7 @@ const ModalPopup = (props) => {
 			/[\w-\.]{2,10}@([\w-]{2,8}\.)+[\w-]{2,4}$/
 		);
 		const bodyValidation = userInput.commentBody.match(
-			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,38}$/
+			/^[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{8,198}$/
 		);
 
 		if (nameValidation && emailValidation && bodyValidation) {
@@ -135,7 +135,7 @@ const ModalPopup = (props) => {
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<Tippy content='The post body should be between 10-50 letters'>
+					<Tippy content='The post body should be between 10-500 letters'>
 						<textarea
 							name='postBody'
 							onChange={handleChange}
@@ -191,7 +191,7 @@ const ModalPopup = (props) => {
 				</div>
 				<div className={styles.modal__body}>
 					<p>Body</p>
-					<Tippy content='The comment body must start with a capital letter and be between 10-40 letters'>
+					<Tippy content='The comment body must start with a capital letter and be between 10-200 letters'>
 						<textarea
 							name='commentBody'
 							value={userInput.commentBody}

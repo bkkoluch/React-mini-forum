@@ -30,8 +30,5 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .comment__details p {
-    word-wrap: break-word;
-  }
 }
 /*# sourceMappingURL=Comments.module.css.map */

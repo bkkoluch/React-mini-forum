@@ -24,8 +24,5 @@
 @media screen and (max-width: 500px) {
 	.comment__details {
 		flex-direction: column;
-		p {
-			word-wrap: break-word;
-		}
 	}
 }
