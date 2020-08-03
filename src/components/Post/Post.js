@@ -9,7 +9,11 @@ import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch } from 'react-redux';
 import { deleteComments } from '../../actions/commentsActions';
-import { deletePost, getPostsDetails } from '../../actions/postsActions';
+import {
+	deletePost,
+	getPostsDetails,
+	deletePostFromApi,
+} from '../../actions/postsActions';
 
 const Post = (props) => {
 	const history = useHistory();
@@ -23,6 +27,7 @@ const Post = (props) => {
 	const removePost = (id) => {
 		dispatch(deleteComments(id));
 		dispatch(deletePost(id));
+		dispatch(deletePostFromApi(id));
 	};
 
 	return (

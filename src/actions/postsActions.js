@@ -58,6 +58,30 @@ export const fetchPosts = () => {
 	};
 };
 
+export const addPostToApi = (userId, postTitle, postBody) => {
+	return () => {
+		fetch('https://jsonplaceholder.typicode.com/posts', {
+			method: 'POST',
+			body: JSON.stringify({
+				title: postTitle,
+				body: postBody,
+				userId: userId,
+			}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
+	};
+};
+
+export const deletePostFromApi = (id) => {
+	return () => {
+		fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+			method: 'DELETE',
+		});
+	};
+};
+
 export const handleErrors = (response) => {
 	if (!response.ok) {
 		throw Error(response.statusText);

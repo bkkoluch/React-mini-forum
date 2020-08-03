@@ -15,6 +15,7 @@ import {
 	sendPostDetails,
 	showPostModal,
 	getPostsAmount,
+	addPostToApi,
 } from '../../actions/postsActions';
 
 Modal.setAppElement('#root');
@@ -77,6 +78,13 @@ const ModalPopup = (props) => {
 		dispatch(addPost(props.sentPost));
 		togglePostModal();
 		dispatch(getPostsAmount(props.amount + 1));
+		dispatch(
+			addPostToApi(
+				props.userId,
+				props.sentPost.title,
+				props.sentPost.body
+			)
+		);
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
