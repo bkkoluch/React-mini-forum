@@ -4,7 +4,11 @@ import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
 import { useDispatch, connect } from 'react-redux';
-import { deletePost, showPostModal } from '../../actions/postsActions';
+import {
+	deletePost,
+	showPostModal,
+	deletePostFromApi,
+} from '../../actions/postsActions';
 import { deleteComments } from '../../actions/commentsActions';
 
 import ModalPopup from '../Modal/Modal';
@@ -17,6 +21,7 @@ const Header = (props) => {
 	const removePost = () => {
 		dispatch(deleteComments(props.id));
 		dispatch(deletePost(props.id));
+		dispatch(deletePostFromApi(props.id));
 		goBack();
 	};
 
