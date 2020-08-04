@@ -53,3 +53,25 @@ export const fetchComments = () => {
 			.catch((error) => dispatch(fetchCommentsFailure(error)));
 	};
 };
+
+export const addCommentToApi = (
+	commentName,
+	commentEmail,
+	commentBody,
+	userId
+) => {
+	return () => {
+		fetch('https://jsonplaceholder.typicode.com/comments', {
+			method: 'POST',
+			body: JSON.stringify({
+				name: commentName,
+				email: commentEmail,
+				body: commentBody,
+				userId: userId,
+			}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
+	};
+};

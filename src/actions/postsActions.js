@@ -58,7 +58,7 @@ export const fetchPosts = () => {
 	};
 };
 
-export const addPostToApi = (userId, postTitle, postBody) => {
+export const addPostToApi = (postTitle, postBody, userId) => {
 	return () => {
 		fetch('https://jsonplaceholder.typicode.com/posts', {
 			method: 'POST',

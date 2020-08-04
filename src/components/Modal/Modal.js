@@ -9,6 +9,7 @@ import {
 	showCommentsModal,
 	addComment,
 	sendCommentDetails,
+	addCommentToApi,
 } from '../../actions/commentsActions';
 import {
 	addPost,
@@ -80,15 +81,23 @@ const ModalPopup = (props) => {
 		dispatch(getPostsAmount(props.amount + 1));
 		dispatch(
 			addPostToApi(
-				props.userId,
 				props.sentPost.title,
-				props.sentPost.body
+				props.sentPost.body,
+				props.userId
 			)
 		);
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
 		toggleCommentModal();
+		dispatch(
+			addCommentToApi(
+				props.sentComment.name,
+				props.sentComment.email,
+				props.sentComment.body,
+				props.userId
+			)
+		);
 	};
 
 	const validatePostModal = () => {
