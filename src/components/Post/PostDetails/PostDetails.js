@@ -10,44 +10,27 @@ import ModalPopup from 'components/Modal/Modal';
 
 class PostDetails extends React.Component {
 	render() {
-		const openModal = () =>
-			this.props.dispatch(showCommentsModal(this.props.add));
+		const openModal = () => this.props.dispatch(showCommentsModal(this.props.add));
 
 		const modal = <ModalPopup isOpen={this.props.showModal} />;
 
 		return (
 			<div>
-				<Header
-					name={this.props.name}
-					history={this.props.history}
-					show={true}
-				/>
+				<Header name={this.props.name} history={this.props.history} show={true} />
 				<div className={styles.postDetails__container}>
-					<p className={styles.postDetails__title}>
-						{this.props.title}
-					</p>
-					<p className={styles.postDetails__body}>
-						{this.props.body}
-					</p>
+					<p className={styles.postDetails__title}>{this.props.title}</p>
+					<p className={styles.postDetails__body}>{this.props.body}</p>
 					<div className={styles.postDetails__container__buttons}>
 						<button
-							className={
-								styles[
-									'postDetails__container__buttons--toggle'
-								]
-							}
+							className={styles['postDetails__container__buttons--toggle']}
 							onClick={() => this.props.dispatch(commentToggle())}
 						>
-							{this.props.show
-								? 'Hide comments'
-								: 'Show comments'}
+							{this.props.show ? 'Hide comments' : 'Show comments'}
 						</button>
 						<button
 							className={
 								this.props.show
-									? styles[
-											'postDetails__container__buttons--add'
-									  ]
+									? styles['postDetails__container__buttons--add']
 									: styles.hidden
 							}
 							onClick={() => openModal()}

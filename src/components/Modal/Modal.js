@@ -79,13 +79,7 @@ const ModalPopup = (props) => {
 		dispatch(addPost(props.sentPost));
 		togglePostModal();
 		dispatch(getPostsAmount(props.amount + 1));
-		dispatch(
-			addPostToApi(
-				props.sentPost.title,
-				props.sentPost.body,
-				props.userId
-			)
-		);
+		dispatch(addPostToApi(props.sentPost.title, props.sentPost.body, props.userId));
 	};
 	const sendComment = () => {
 		dispatch(addComment(props.sentComment));
@@ -165,10 +159,7 @@ const ModalPopup = (props) => {
 				</div>
 				<div className={styles.modal__buttons}>
 					<button onClick={() => togglePostModal()}>Cancel</button>
-					<button
-						onClick={() => sendPost()}
-						disabled={validatePostModal()}
-					>
+					<button onClick={() => sendPost()} disabled={validatePostModal()}>
 						Save
 					</button>
 				</div>
