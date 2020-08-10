@@ -11,7 +11,6 @@
 
 .post__container__trash,
 .post__container__arrow {
-  margin-left: auto;
   margin-right: 16px;
   color: #075394;
 }
@@ -26,4 +25,3 @@
     margin-right: 0;
   }
 }
-/*# sourceMappingURL=Post.module.css.map */

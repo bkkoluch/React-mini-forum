@@ -1,4 +1,4 @@
-import { handleErrors } from './postsActions';
+import { URLS, getData } from 'utils/utils';
 
 export const FETCH_COMMENTS_BEGIN = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
@@ -41,27 +41,17 @@ export const sendCommentDetails = (postId, id, name, email, body) => ({
 });
 
 export const fetchComments = () => {
-	return (dispatch) => {
-		dispatch(fetchCommentsBegin());
-		return fetch('https://jsonplaceholder.typicode.com/comments')
-			.then(handleErrors)
-			.then((res) => res.json())
-			.then((json) => {
-				dispatch(fetchCommentsSuccess(json));
-				return json;
-			})
-			.catch((error) => dispatch(fetchCommentsFailure(error)));
-	};
+	return getData(
+		URLS.COMMENTS,
+		fetchCommentsBegin,
+		fetchCommentsSuccess,
+		fetchCommentsFailure
+	);
 };
 
-export const addCommentToApi = (
-	commentName,
-	commentEmail,
-	commentBody,
-	userId
-) => {
+export const addCommentToApi = (commentName, commentEmail, commentBody, userId) => {
 	return () => {
-		fetch('https://jsonplaceholder.typicode.com/comments', {
+		fetch(URLS.COMMENTS, {
 			method: 'POST',
 			body: JSON.stringify({
 				name: commentName,

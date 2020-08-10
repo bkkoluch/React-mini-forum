@@ -1,19 +1,19 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import styles from './User.module.css';
+import { useSelector, useDispatch, connect } from 'react-redux';
+import { Link, generatePath } from 'react-router-dom';
 
-import { useDispatch, connect } from 'react-redux';
-import { getUserDetails } from '../../actions/usersActions';
-import { getPostsAmount } from '../../actions/postsActions';
+import { ROUTES } from 'utils/utils';
+import { getUserDetails } from 'actions/usersActions';
+import { getPostsAmount } from 'actions/postsActions';
 
 const User = (props) => {
-	const history = useHistory();
 	const dispatch = useDispatch();
+	const posts = useSelector((state) => state.posts);
 
 	const getData = () => {
-		history.push('/user_details');
 		dispatch(getUserDetails(props.id, props.name));
-		dispatch(getPostsAmount(props.posts.posts.length));
+		dispatch(getPostsAmount(posts.length));
 	};
 
 	return (
@@ -28,15 +28,16 @@ const User = (props) => {
 				<p>{props.company.name}</p>
 				<p>{props.company.catchPhrase}</p>
 			</div>
-			<button className={styles.user__button} onClick={() => getData()}>
-				Details
-			</button>
+			<Link
+				to={generatePath(ROUTES.USER_DETAILS, { userId: props.id })}
+				style={{ textAlign: 'center' }}
+			>
+				<button className={styles.user__button} onClick={() => getData()}>
+					Details
+				</button>
+			</Link>
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => ({
-	posts: state.posts,
-});
-
-export default connect(mapStateToProps)(User);
+export default User;

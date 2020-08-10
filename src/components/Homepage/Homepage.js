@@ -3,8 +3,8 @@ import styles from './Homepage.module.css';
 
 import { connect } from 'react-redux';
 
-import User from '../User/User';
-import Spinner from './../Spinner/Spinner';
+import User from 'components/User/User';
+import Spinner from 'components/Spinner/Spinner';
 
 class Homepage extends React.Component {
 	render() {

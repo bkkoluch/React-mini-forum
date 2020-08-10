@@ -1,26 +1,21 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import styles from './Post.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
+import { useDispatch } from 'react-redux';
+import { Link, generatePath } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-import { useDispatch } from 'react-redux';
-import { deleteComments } from '../../actions/commentsActions';
-import {
-	deletePost,
-	getPostsDetails,
-	deletePostFromApi,
-} from '../../actions/postsActions';
+import { ROUTES } from 'utils/utils';
+import { deleteComments } from 'actions/commentsActions';
+import { deletePost, getPostsDetails, deletePostFromApi } from 'actions/postsActions';
 
 const Post = (props) => {
-	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const getPostDetails = () => {
-		history.push('/post_details');
 		dispatch(getPostsDetails(props.id, props.title, props.body));
 	};
 
@@ -48,12 +43,20 @@ const Post = (props) => {
 					</div>
 				</Tippy>
 				<p>{props.title}</p>
-				<FontAwesomeIcon
-					icon={faAngleRight}
-					size='3x'
-					className={styles.post__container__arrow}
-					onClick={() => getPostDetails()}
-				/>
+				<Link
+					to={generatePath(ROUTES.POST_DETAILS, {
+						userId: props.userId,
+						postId: props.id,
+					})}
+					style={{ marginLeft: 'auto' }}
+				>
+					<FontAwesomeIcon
+						icon={faAngleRight}
+						size='3x'
+						className={styles.post__container__arrow}
+						onClick={() => getPostDetails()}
+					/>
+				</Link>
 			</div>
 		</Tippy>
 	);
