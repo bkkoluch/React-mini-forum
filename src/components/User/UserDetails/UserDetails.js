@@ -2,8 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import Post from '../../Post/Post';
-import Header from '../../Header/Header';
+import Post from 'components/Post/Post';
+import Header from 'components/Header/Header';
 
 const UserDetails = (props) => {
 	return (

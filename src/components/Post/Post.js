@@ -8,12 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch } from 'react-redux';
-import { deleteComments } from '../../actions/commentsActions';
+import { deleteComments } from 'actions/commentsActions';
 import {
 	deletePost,
 	getPostsDetails,
 	deletePostFromApi,
-} from '../../actions/postsActions';
+} from 'actions/postsActions';
 
 const Post = (props) => {
 	const history = useHistory();

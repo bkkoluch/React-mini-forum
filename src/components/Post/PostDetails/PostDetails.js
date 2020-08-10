@@ -2,14 +2,11 @@ import React from 'react';
 import styles from './PostDetails.module.css';
 
 import { connect } from 'react-redux';
-import {
-	commentToggle,
-	showCommentsModal,
-} from '../../../actions/commentsActions';
+import { commentToggle, showCommentsModal } from 'actions/commentsActions';
 
-import Comment from '../../Comment/Comment';
-import Header from '../../Header/Header';
-import ModalPopup from '../../Modal/Modal';
+import Comment from 'components/Comment/Comment';
+import Header from 'components/Header/Header';
+import ModalPopup from 'components/Modal/Modal';
 
 class PostDetails extends React.Component {
 	render() {

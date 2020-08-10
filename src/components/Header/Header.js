@@ -8,10 +8,10 @@ import {
 	deletePost,
 	showPostModal,
 	deletePostFromApi,
-} from '../../actions/postsActions';
-import { deleteComments } from '../../actions/commentsActions';
+} from 'actions/postsActions';
+import { deleteComments } from 'actions/commentsActions';
 
-import ModalPopup from '../Modal/Modal';
+import ModalPopup from 'components/Modal/Modal';
 
 const Header = (props) => {
 	const dispatch = useDispatch();

@@ -10,14 +10,14 @@ import {
 	addComment,
 	sendCommentDetails,
 	addCommentToApi,
-} from '../../actions/commentsActions';
+} from 'actions/commentsActions';
 import {
 	addPost,
 	sendPostDetails,
 	showPostModal,
 	getPostsAmount,
 	addPostToApi,
-} from '../../actions/postsActions';
+} from 'actions/postsActions';
 
 Modal.setAppElement('#root');
 

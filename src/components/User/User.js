@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import styles from './User.module.css';
 
 import { useDispatch, connect } from 'react-redux';
-import { getUserDetails } from '../../actions/usersActions';
-import { getPostsAmount } from '../../actions/postsActions';
+import { getUserDetails } from 'actions/usersActions';
+import { getPostsAmount } from 'actions/postsActions';
 
 const User = (props) => {
 	const history = useHistory();
