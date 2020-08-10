@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import styles from './Post.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
@@ -14,13 +14,12 @@ import {
 	getPostsDetails,
 	deletePostFromApi,
 } from 'actions/postsActions';
+import { ROUTES } from 'containers/App';
 
 const Post = (props) => {
-	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const getPostDetails = () => {
-		history.push('/post_details');
 		dispatch(getPostsDetails(props.id, props.title, props.body));
 	};
 
@@ -48,12 +47,20 @@ const Post = (props) => {
 					</div>
 				</Tippy>
 				<p>{props.title}</p>
-				<FontAwesomeIcon
-					icon={faAngleRight}
-					size='3x'
-					className={styles.post__container__arrow}
-					onClick={() => getPostDetails()}
-				/>
+				<Link
+					to={generatePath(ROUTES.POST_DETAILS, {
+						userId: props.userId,
+						postId: props.id,
+					})}
+					style={{ marginLeft: 'auto' }}
+				>
+					<FontAwesomeIcon
+						icon={faAngleRight}
+						size='3x'
+						className={styles.post__container__arrow}
+						onClick={() => getPostDetails()}
+					/>
+				</Link>
 			</div>
 		</Tippy>
 	);

@@ -10,6 +10,12 @@ import Homepage from 'components/Homepage/Homepage';
 import UserDetails from 'components/User/UserDetails/UserDetails';
 import PostDetails from 'components/Post/PostDetails/PostDetails';
 
+export const ROUTES = {
+	ROOT: '/',
+	USER_DETAILS: '/user_details/:userId',
+	POST_DETAILS: '/user_details/:userId/:postId',
+};
+
 class App extends React.Component {
 	componentDidMount() {
 		this.props.dispatch(fetchPosts());
@@ -22,9 +28,15 @@ class App extends React.Component {
 			<div className='App'>
 				<BrowserRouter>
 					<Switch>
-						<Route exact path='/' component={Homepage} />
-						<Route path='/user_details' component={UserDetails} />
-						<Route path='/post_details' component={PostDetails} />
+						<Route exact path={ROUTES.ROOT} component={Homepage} />
+						<Route
+							path={ROUTES.POST_DETAILS}
+							component={PostDetails}
+						/>
+						<Route
+							path={ROUTES.USER_DETAILS}
+							component={UserDetails}
+						/>
 					</Switch>
 				</BrowserRouter>
 			</div>

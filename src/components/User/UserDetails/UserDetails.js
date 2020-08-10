@@ -6,6 +6,7 @@ import Post from 'components/Post/Post';
 import Header from 'components/Header/Header';
 
 const UserDetails = (props) => {
+	console.log(props);
 	return (
 		<div>
 			<Header name={props.name} history={props.history} />
@@ -16,6 +17,7 @@ const UserDetails = (props) => {
 						id={post.id}
 						title={post.title}
 						body={post.body}
+						userId={props.match.params.userId}
 					/>
 				) : (
 					''
