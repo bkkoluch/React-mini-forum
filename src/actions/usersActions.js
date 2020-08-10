@@ -1,5 +1,4 @@
-import { getData } from './postsActions';
-import { URLS } from 'utils/utils';
+import { URLS, getData } from 'utils/utils';
 
 export const FETCH_USERS_BEGIN = 'FETCH_USERS_BEGIN';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';

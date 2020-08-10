@@ -1,4 +1,4 @@
-import { URLS } from 'utils/utils';
+import { URLS, getData } from 'utils/utils';
 
 export const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
@@ -46,20 +46,6 @@ export const showPostModal = (showModal) => ({
 	payload: showModal,
 });
 
-export const getData = (url, fetchBeginFunction, callbackSuccess, callbackError) => {
-	return (dispatch) => {
-		dispatch(fetchBeginFunction());
-		return fetch(url)
-			.then(handleErrors)
-			.then((res) => res.json())
-			.then((json) => {
-				dispatch(callbackSuccess(json));
-				return json;
-			})
-			.catch((error) => dispatch(callbackError(error)));
-	};
-};
-
 export const fetchPosts = () => {
 	return getData(URLS.POSTS, fetchPostsBegin, fetchPostsSuccess, fetchPostsFailure);
 };
@@ -86,11 +72,4 @@ export const deletePostFromApi = (id) => {
 			method: 'DELETE',
 		});
 	};
-};
-
-export const handleErrors = (response) => {
-	if (!response.ok) {
-		throw Error(response.statusText);
-	}
-	return response;
 };

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, generatePath } from 'react-router-dom';
 import styles from './User.module.css';
-
 import { useDispatch, connect } from 'react-redux';
+import { Link, generatePath } from 'react-router-dom';
+
+import { ROUTES } from 'utils/utils';
 import { getUserDetails } from 'actions/usersActions';
 import { getPostsAmount } from 'actions/postsActions';
-import { ROUTES } from 'containers/App';
 
 const User = (props) => {
 	const dispatch = useDispatch();
@@ -31,10 +31,7 @@ const User = (props) => {
 				to={generatePath(ROUTES.USER_DETAILS, { userId: props.id })}
 				style={{ textAlign: 'center' }}
 			>
-				<button
-					className={styles.user__button}
-					onClick={() => getData()}
-				>
+				<button className={styles.user__button} onClick={() => getData()}>
 					Details
 				</button>
 			</Link>
