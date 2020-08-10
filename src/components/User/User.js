@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './User.module.css';
-import { useDispatch, connect } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
 
 import { ROUTES } from 'utils/utils';
@@ -9,10 +9,11 @@ import { getPostsAmount } from 'actions/postsActions';
 
 const User = (props) => {
 	const dispatch = useDispatch();
+	const posts = useSelector((state) => state.posts);
 
 	const getData = () => {
 		dispatch(getUserDetails(props.id, props.name));
-		dispatch(getPostsAmount(props.posts.posts.length));
+		dispatch(getPostsAmount(posts.length));
 	};
 
 	return (
@@ -39,8 +40,4 @@ const User = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	posts: state.posts,
-});
-
-export default connect(mapStateToProps)(User);
+export default User;
