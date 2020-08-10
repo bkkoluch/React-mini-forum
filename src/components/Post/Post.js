@@ -1,20 +1,22 @@
 import React from 'react';
-import { Link, generatePath } from 'react-router-dom';
 import styles from './Post.module.css';
 import Tippy from '@tippy.js/react';
+
 import 'tippy.js/dist/tippy.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch } from 'react-redux';
+import { Link, generatePath } from 'react-router-dom';
+
+import { ROUTES } from 'containers/App';
 import { deleteComments } from 'actions/commentsActions';
 import {
 	deletePost,
 	getPostsDetails,
 	deletePostFromApi,
 } from 'actions/postsActions';
-import { ROUTES } from 'containers/App';
 
 const Post = (props) => {
 	const dispatch = useDispatch();

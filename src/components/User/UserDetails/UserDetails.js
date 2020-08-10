@@ -6,7 +6,6 @@ import Post from 'components/Post/Post';
 import Header from 'components/Header/Header';
 
 const UserDetails = (props) => {
-	console.log(props);
 	return (
 		<div>
 			<Header name={props.name} history={props.history} />

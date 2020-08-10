@@ -1,3 +1,5 @@
+import { URLS } from 'utils/utils';
+
 export const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
@@ -44,23 +46,27 @@ export const showPostModal = (showModal) => ({
 	payload: showModal,
 });
 
-export const fetchPosts = () => {
+export const getData = (url, fetchBeginFunction, callbackSuccess, callbackError) => {
 	return (dispatch) => {
-		dispatch(fetchPostsBegin());
-		return fetch('https://jsonplaceholder.typicode.com/posts')
+		dispatch(fetchBeginFunction());
+		return fetch(url)
 			.then(handleErrors)
 			.then((res) => res.json())
 			.then((json) => {
-				dispatch(fetchPostsSuccess(json));
+				dispatch(callbackSuccess(json));
 				return json;
 			})
-			.catch((error) => dispatch(fetchPostsFailure(error)));
+			.catch((error) => dispatch(callbackError(error)));
 	};
+};
+
+export const fetchPosts = () => {
+	return getData(URLS.POSTS, fetchPostsBegin, fetchPostsSuccess, fetchPostsFailure);
 };
 
 export const addPostToApi = (postTitle, postBody, userId) => {
 	return () => {
-		fetch('https://jsonplaceholder.typicode.com/posts', {
+		fetch(URLS.POSTS, {
 			method: 'POST',
 			body: JSON.stringify({
 				title: postTitle,
@@ -76,7 +82,7 @@ export const addPostToApi = (postTitle, postBody, userId) => {
 
 export const deletePostFromApi = (id) => {
 	return () => {
-		fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+		fetch(URLS.POSTS + '/' + id, {
 			method: 'DELETE',
 		});
 	};
