@@ -1,11 +1,22 @@
-import React from 'react';
-
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { fetchPosts } from 'actions/postsActions';
 
 import Post from 'components/Post/Post';
 import Header from 'components/Header/Header';
+import Spinner from 'components/Spinner/Spinner';
 
 const UserDetails = (props) => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchPosts());
+	}, []);
+
+	if (props.loading) {
+		return <Spinner />;
+	}
+
 	return (
 		<div>
 			<Header name={props.name} history={props.history} />
