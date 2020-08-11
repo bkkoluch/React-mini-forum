@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './Header.module.css';
+import { useDispatch, connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
-import { useDispatch, connect } from 'react-redux';
 import { deletePost, showPostModal, deletePostFromApi } from 'actions/postsActions';
 import { deleteComments } from 'actions/commentsActions';
-
 import ModalPopup from 'components/Modal/Modal';
+import styles from './Header.module.css';
 
 const Header = (props) => {
 	const dispatch = useDispatch();
@@ -50,5 +50,13 @@ const mapStateToProps = (state) => ({
 	id: state.posts.id,
 	showPostModal: state.posts.showPostModal,
 });
+
+Header.propTypes = {
+	history: PropTypes.object,
+	id: PropTypes.number,
+	name: PropTypes.string,
+	show: PropTypes.bool,
+	showPostModal: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(Header);

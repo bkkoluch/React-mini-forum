@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './Homepage.module.css';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import User from 'components/User/User';
 import Spinner from 'components/Spinner/Spinner';
+import styles from './Homepage.module.css';
 
 class Homepage extends React.Component {
 	render() {
@@ -39,5 +39,10 @@ const mapStateToProps = (state) => ({
 	loading: state.users.loading,
 	error: state.users.error,
 });
+
+Homepage.propTypes = {
+	users: PropTypes.array,
+	loading: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(Homepage);

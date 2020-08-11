@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from './Post.module.css';
-import Tippy from '@tippy.js/react';
-import 'tippy.js/dist/tippy.css';
-
 import { useDispatch } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import { ROUTES } from 'utils/utils';
 import { deleteComments } from 'actions/commentsActions';
 import { deletePost, getPostsDetails, deletePostFromApi } from 'actions/postsActions';
+import styles from './Post.module.css';
 
 const Post = (props) => {
 	const dispatch = useDispatch();
@@ -60,6 +60,13 @@ const Post = (props) => {
 			</div>
 		</Tippy>
 	);
+};
+
+Post.propTypes = {
+	id: PropTypes.number,
+	title: PropTypes.string,
+	body: PropTypes.string,
+	userId: PropTypes.string,
 };
 
 export default Post;
