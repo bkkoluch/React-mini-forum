@@ -2,17 +2,25 @@ import React from 'react';
 import styles from './PostDetails.module.css';
 
 import { connect } from 'react-redux';
-import { commentToggle, showCommentsModal } from 'actions/commentsActions';
+import { commentToggle, showCommentsModal, fetchComments } from 'actions/commentsActions';
 
 import Comment from 'components/Comment/Comment';
 import Header from 'components/Header/Header';
 import ModalPopup from 'components/Modal/Modal';
+import Spinner from 'components/Spinner/Spinner';
 
 class PostDetails extends React.Component {
-	render() {
-		const openModal = () => this.props.dispatch(showCommentsModal(this.props.add));
+	componentDidMount() {
+		this.props.dispatch(fetchComments());
+	}
 
+	render() {
+		const openModal = () => this.props.dispatch(showCommentsModal());
 		const modal = <ModalPopup isOpen={this.props.showModal} />;
+
+		if (this.props.loading) {
+			return <Spinner />;
+		}
 
 		return (
 			<div>
@@ -33,7 +41,7 @@ class PostDetails extends React.Component {
 									? styles['postDetails__container__buttons--add']
 									: styles.hidden
 							}
-							onClick={() => openModal()}
+							onClick={openModal}
 						>
 							Add Comment
 						</button>
@@ -64,6 +72,7 @@ const mapStateToProps = (state) => ({
 	id: state.posts.id,
 	title: state.posts.title,
 	body: state.posts.body,
+	loading: state.comments.loading,
 	comments: state.comments.comments,
 	show: state.comments.show,
 	showModal: state.comments.showModal,

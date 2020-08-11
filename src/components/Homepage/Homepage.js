@@ -13,11 +13,7 @@ class Homepage extends React.Component {
 		}
 
 		if (this.props.loading) {
-			return (
-				<div className={styles.homepage__container}>
-					<Spinner />
-				</div>
-			);
+			return <Spinner />;
 		}
 
 		return (
@@ -40,7 +36,7 @@ class Homepage extends React.Component {
 
 const mapStateToProps = (state) => ({
 	users: state.users.users,
-	loading: state.comments.loading,
+	loading: state.users.loading,
 	error: state.users.error,
 });
 

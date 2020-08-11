@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './User.module.css';
-import { useSelector, useDispatch, connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
 
 import { ROUTES } from 'utils/utils';
@@ -13,7 +13,7 @@ const User = (props) => {
 
 	const getData = () => {
 		dispatch(getUserDetails(props.id, props.name));
-		dispatch(getPostsAmount(posts.length));
+		dispatch(getPostsAmount(posts.posts.length));
 	};
 
 	return (
@@ -32,7 +32,7 @@ const User = (props) => {
 				to={generatePath(ROUTES.USER_DETAILS, { userId: props.id })}
 				style={{ textAlign: 'center' }}
 			>
-				<button className={styles.user__button} onClick={() => getData()}>
+				<button className={styles.user__button} onClick={getData}>
 					Details
 				</button>
 			</Link>
