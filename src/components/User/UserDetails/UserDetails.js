@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 import { fetchPosts } from 'actions/postsActions';
 
@@ -44,5 +45,12 @@ const mapStateToProps = (state) => ({
 	id: state.users.id,
 	name: state.users.name,
 });
+
+UserDetails.propTypes = {
+	posts: PropTypes.array,
+	loading: PropTypes.bool,
+	id: PropTypes.number,
+	name: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(UserDetails);

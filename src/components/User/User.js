@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './User.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
@@ -38,6 +39,16 @@ const User = (props) => {
 			</Link>
 		</div>
 	);
+};
+
+User.propTypes = {
+	id: PropTypes.number,
+	name: PropTypes.string,
+	email: PropTypes.string,
+	phone: PropTypes.string,
+	website: PropTypes.string,
+	company: PropTypes.object,
+	catchPhrase: PropTypes.string,
 };
 
 export default User;

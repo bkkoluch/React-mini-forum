@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Modal.module.css';
 import Modal from 'react-modal';
 import Tippy from '@tippy.js/react';
@@ -224,15 +225,28 @@ const ModalPopup = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	showCommentsModal: state.comments.showModal,
-	showPostModal: state.posts.showPostModal,
-	sentPost: state.posts.sentPost,
-	sentComment: state.comments.comment,
 	userId: state.users.id,
-	postId: state.posts.id,
+	sentComment: state.comments.comment,
 	comments: state.comments.comments,
+	showCommentsModal: state.comments.showModal,
 	posts: state.posts.posts,
 	amount: state.posts.amount,
+	postId: state.posts.id,
+	sentPost: state.posts.sentPost,
+	showPostModal: state.posts.showPostModal,
 });
+
+Modal.propTypes = {
+	userId: PropTypes.number,
+	comments: PropTypes.array,
+	sentComment: PropTypes.object,
+	showCommentsModal: PropTypes.bool,
+	posts: PropTypes.array,
+	amount: PropTypes.number,
+	postId: PropTypes.number,
+	sentPost: PropTypes.object,
+	showPostModal: PropTypes.bool,
+	isOpen: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(ModalPopup);

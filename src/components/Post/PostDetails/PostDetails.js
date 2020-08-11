@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './PostDetails.module.css';
 
 import { connect } from 'react-redux';
@@ -77,5 +78,16 @@ const mapStateToProps = (state) => ({
 	show: state.comments.show,
 	showModal: state.comments.showModal,
 });
+
+PostDetails.propTypes = {
+	name: PropTypes.string,
+	id: PropTypes.number,
+	title: PropTypes.string,
+	body: PropTypes.string,
+	loading: PropTypes.bool,
+	comments: PropTypes.array,
+	show: PropTypes.bool,
+	showModal: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(PostDetails);

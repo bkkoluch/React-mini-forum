@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
@@ -50,5 +51,13 @@ const mapStateToProps = (state) => ({
 	id: state.posts.id,
 	showPostModal: state.posts.showPostModal,
 });
+
+Header.propTypes = {
+	history: PropTypes.object,
+	id: PropTypes.number,
+	name: PropTypes.string,
+	show: PropTypes.bool,
+	showPostModal: PropTypes.bool,
+};
 
 export default connect(mapStateToProps)(Header);

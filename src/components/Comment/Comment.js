@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Comments.module.css';
 
 const Comment = (props) => {
@@ -11,6 +12,12 @@ const Comment = (props) => {
 			<p>{props.body}</p>
 		</div>
 	);
+};
+
+Comment.propTypes = {
+	name: PropTypes.string,
+	email: PropTypes.string,
+	body: PropTypes.string,
 };
 
 export default Comment;

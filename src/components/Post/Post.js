@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Post.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
@@ -60,6 +61,13 @@ const Post = (props) => {
 			</div>
 		</Tippy>
 	);
+};
+
+Post.propTypes = {
+	id: PropTypes.number,
+	title: PropTypes.string,
+	body: PropTypes.string,
+	userId: PropTypes.string,
 };
 
 export default Post;
