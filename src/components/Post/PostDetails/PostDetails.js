@@ -19,11 +19,7 @@ class PostDetails extends React.Component {
 		const modal = <ModalPopup isOpen={this.props.showModal} />;
 
 		if (this.props.loading) {
-			return (
-				<div className={styles.homepage__container}>
-					<Spinner />
-				</div>
-			);
+			return <Spinner />;
 		}
 
 		return (
