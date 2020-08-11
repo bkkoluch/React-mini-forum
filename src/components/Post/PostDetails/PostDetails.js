@@ -10,7 +10,7 @@ import ModalPopup from 'components/Modal/Modal';
 
 class PostDetails extends React.Component {
 	render() {
-		const openModal = () => this.props.dispatch(showCommentsModal(this.props.add));
+		const openModal = () => this.props.dispatch(showCommentsModal());
 
 		const modal = <ModalPopup isOpen={this.props.showModal} />;
 
@@ -33,7 +33,7 @@ class PostDetails extends React.Component {
 									? styles['postDetails__container__buttons--add']
 									: styles.hidden
 							}
-							onClick={() => openModal()}
+							onClick={openModal}
 						>
 							Add Comment
 						</button>

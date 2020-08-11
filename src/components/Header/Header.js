@@ -32,14 +32,14 @@ const Header = (props) => {
 			<Tippy content='Click to add a post'>
 				<button
 					className={!props.show ? styles.header__addButton : styles.hidden}
-					onClick={() => toggleModal()}
+					onClick={toggleModal}
 				/>
 			</Tippy>
 			{modal}
 			<Tippy content='Click to remove a post'>
 				<button
 					className={props.show ? styles.header__deleteButton : styles.hidden}
-					onClick={() => removePost(props.id)}
+					onClick={removePost}
 				/>
 			</Tippy>
 		</div>

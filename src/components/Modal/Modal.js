@@ -158,8 +158,8 @@ const ModalPopup = (props) => {
 					</Tippy>
 				</div>
 				<div className={styles.modal__buttons}>
-					<button onClick={() => togglePostModal()}>Cancel</button>
-					<button onClick={() => sendPost()} disabled={validatePostModal()}>
+					<button onClick={togglePostModal}>Cancel</button>
+					<button onClick={sendPost} disabled={validatePostModal()}>
 						Save
 					</button>
 				</div>
@@ -211,11 +211,8 @@ const ModalPopup = (props) => {
 					</Tippy>
 				</div>
 				<div className={styles.modal__buttons}>
-					<button onClick={() => toggleCommentModal()}>Cancel</button>
-					<button
-						onClick={() => sendComment()}
-						disabled={validateCommentModal()}
-					>
+					<button onClick={toggleCommentModal}>Cancel</button>
+					<button onClick={sendComment} disabled={validateCommentModal()}>
 						Save
 					</button>
 				</div>

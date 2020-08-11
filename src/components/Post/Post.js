@@ -19,10 +19,10 @@ const Post = (props) => {
 		dispatch(getPostsDetails(props.id, props.title, props.body));
 	};
 
-	const removePost = (id) => {
-		dispatch(deleteComments(id));
-		dispatch(deletePost(id));
-		dispatch(deletePostFromApi(id));
+	const removePost = () => {
+		dispatch(deleteComments(props.id));
+		dispatch(deletePost(props.id));
+		dispatch(deletePostFromApi(props.id));
 	};
 
 	return (
@@ -38,7 +38,7 @@ const Post = (props) => {
 							icon={faTrashAlt}
 							size='2x'
 							className={styles.post__container__trash}
-							onClick={() => removePost(props.id)}
+							onClick={removePost}
 						/>
 					</div>
 				</Tippy>
@@ -54,7 +54,7 @@ const Post = (props) => {
 						icon={faAngleRight}
 						size='3x'
 						className={styles.post__container__arrow}
-						onClick={() => getPostDetails()}
+						onClick={getPostDetails}
 					/>
 				</Link>
 			</div>
