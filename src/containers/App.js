@@ -22,6 +22,7 @@ class App extends React.Component {
 						<Route exact path={ROUTES.ROOT} component={Homepage} />
 						<Route path={ROUTES.POST_DETAILS} component={PostDetails} />
 						<Route path={ROUTES.USER_DETAILS} component={UserDetails} />
+						<Route component={Homepage} />
 					</Switch>
 				</HashRouter>
 			</div>
