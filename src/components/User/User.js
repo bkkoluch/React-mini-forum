@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './User.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { ROUTES } from 'utils/utils';
 import { getUserDetails } from 'actions/usersActions';
 import { getPostsAmount } from 'actions/postsActions';
+import styles from './User.module.css';
 
 const User = (props) => {
 	const dispatch = useDispatch();

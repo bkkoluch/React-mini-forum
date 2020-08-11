@@ -1,14 +1,13 @@
 import React from 'react';
+import { useDispatch, connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './Header.module.css';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
-import { useDispatch, connect } from 'react-redux';
 import { deletePost, showPostModal, deletePostFromApi } from 'actions/postsActions';
 import { deleteComments } from 'actions/commentsActions';
-
 import ModalPopup from 'components/Modal/Modal';
+import styles from './Header.module.css';
 
 const Header = (props) => {
 	const dispatch = useDispatch();

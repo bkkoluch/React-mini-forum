@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { fetchPosts } from 'actions/postsActions';
 
 import Post from 'components/Post/Post';

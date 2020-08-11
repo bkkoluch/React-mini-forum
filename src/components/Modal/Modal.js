@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-
 import { connect } from 'react-redux';
-import CommentModal from './CommentModal/CommentModal';
+import PropTypes from 'prop-types';
+
 import PostModal from './PostModal/PostModal';
+import CommentModal from './CommentModal/CommentModal';
 
 Modal.setAppElement('#root');
 

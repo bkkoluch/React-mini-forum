@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Homepage.module.css';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import User from 'components/User/User';
 import Spinner from 'components/Spinner/Spinner';
+import styles from './Homepage.module.css';
 
 class Homepage extends React.Component {
 	render() {

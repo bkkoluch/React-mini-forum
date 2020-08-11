@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import styles from 'components/Modal/Modal.module.css';
+import { useDispatch, connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
 
-import { useDispatch, connect } from 'react-redux';
 import {
 	addPost,
 	sendPostDetails,
@@ -13,6 +12,7 @@ import {
 	getPostsAmount,
 	addPostToApi,
 } from 'actions/postsActions';
+import styles from 'components/Modal/Modal.module.css';
 
 const PostModal = (props) => {
 	const dispatch = useDispatch();

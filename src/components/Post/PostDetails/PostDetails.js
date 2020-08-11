@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './PostDetails.module.css';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { commentToggle, showCommentsModal, fetchComments } from 'actions/commentsActions';
 
 import Comment from 'components/Comment/Comment';
 import Header from 'components/Header/Header';
 import ModalPopup from 'components/Modal/Modal';
 import Spinner from 'components/Spinner/Spinner';
+import styles from './PostDetails.module.css';
 
 class PostDetails extends React.Component {
 	componentDidMount() {
